@@ -30,17 +30,21 @@ public class Pessoa implements Serializable{
 	 private static final long serialVersionUID = 1L;
 	 	
 	 	//FAZENDO UMA SEQUENCE NO DB E DEPOIS MAPEAR O CAMPO QUE VAI SER GERADO
-	 	@Id
 	    @SequenceGenerator(name = "PESSOA_SQ", sequenceName = "PESSOA_SQ", allocationSize = 1, schema = "pessoa_estudo")
 	    @GeneratedValue(generator = "PESSOA_SQ", strategy = GenerationType.SEQUENCE)
 	    
 	    //FAZENDO UM MAPEAMENTO DO CAMPO DA ENTIDADE COM A COLUNA DO DB
+	    @Id
 	    @Column(name = "ID", nullable = false)
 	    private Long id;
 	    
 	 	@NotBlank
 	    @Column(name = "NOME")
 	    private String nome;
+	 	
+	 	@NotBlank
+	 	@Column(name = "NOME_FANTASIA")
+	 	private String nomeFantasia;
 	 	
 	 	@NotBlank
 	    @Column(name = "IDADE")	
