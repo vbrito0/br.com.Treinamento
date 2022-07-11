@@ -24,31 +24,16 @@ public class PessoaService {
 	
 	public Pessoa criarPessoa(final Pessoa pessoa) {
 		
-		validarSeMaiorIdade(pessoa);
-		validarSeMenorIdade(pessoa);
-		
 		final Pessoa pessoaSaved = pessoaRepository.save(pessoa);
         return pessoaSaved;
 	}
-	
-	private void validarSeMaiorIdade(final Pessoa pessoa) {
-        if (Objects.nonNull(pessoa) && pessoa.getIdade() >= 18) {
-            throw new IllegalArgumentException("Você é maior de idade");
-        }
-    }
-	
-	private void validarSeMenorIdade(final Pessoa pessoa) {
-        if (Objects.nonNull(pessoa) && pessoa.getIdade() < 18) {
-            throw new IllegalArgumentException("Você não é maior de idade ainda");
-        }
-    }
 	
 	public Pessoa alterar(final Pessoa pessoa) {
         return pessoaRepository.save(pessoa);
     }
 
-    public Pessoa buscarPessoas(Long id) {
-        return pessoaRepository.findById(id).get();
+    public Pessoa buscarPessoas(Long idPessoa) {
+        return pessoaRepository.findById(idPessoa).get();
     }
 
     public Pessoa salvarPessoa(Pessoa pessoaSave) {

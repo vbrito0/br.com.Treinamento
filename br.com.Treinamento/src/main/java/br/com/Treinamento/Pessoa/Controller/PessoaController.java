@@ -16,7 +16,7 @@ import br.com.Treinamento.Pessoa.Model.Pessoa;
 import br.com.Treinamento.Pessoa.Service.PessoaService;
 
 @RestController
-@RequestMapping("/pessoas")
+@RequestMapping("/pessoa")
 public class PessoaController {
 	
 	@Autowired
@@ -44,7 +44,7 @@ public class PessoaController {
 	
 	@PutMapping("/alterar/{idPessoa}")
     public ResponseEntity<Pessoa> alterarPessoa(@RequestBody final Pessoa pessoa, @PathVariable("idPessoa") Long idPessoa) {
-        final Pessoa pessoaParaAlterar = Pessoa.builder().id(idPessoa).nome(pessoa.getNome()).idade(pessoa.getIdade()).sexo(pessoa.getSexo()).estatura(pessoa.getEstatura()).build();
+        final Pessoa pessoaParaAlterar = Pessoa.builder().idPessoa(idPessoa).nome(pessoa.getNome()).nomeFantasia(pessoa.getNomeFantasia()).build();
         return new ResponseEntity<Pessoa>(pessoaService.alterar(pessoaParaAlterar), HttpStatus.OK);
     }
 }
