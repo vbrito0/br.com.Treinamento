@@ -4,6 +4,10 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
@@ -25,24 +29,30 @@ public class Endereco implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
 	
-	@Column(name = "LOGRADOURO")
+	@Id
+    @SequenceGenerator(name = "ENDERECO_SQ", sequenceName = "ENDERECO_SQ", allocationSize = 1, schema = "pessoa_estudo")
+    @GeneratedValue(generator = "ENDERECO_SQ", strategy = GenerationType.SEQUENCE)
+	@Column(name = "ID", nullable = false)
+    private Long id;
+	
+	@Column(name = "LOGRADOURO", nullable = false)
 	private String logradouro;
 	
-	@Column(name = "NUMERO")
+	@Column(name = "NUMERO", nullable = false)
 	private Integer numero;
 	
-	@Column(name = "COMPLEMENTO")
+	@Column(name = "COMPLEMENTO", nullable = false)
 	private String complemento;
 	
-	@Column(name = "BAIRRO")
+	@Column(name = "BAIRRO", nullable = false)
 	private String bairro;
 	
-	@Column(name = "CEP")
+	@Column(name = "CEP", nullable = false)
 	private String cep;
 	
-	@Column(name = "CIDADE")
+	@Column(name = "CIDADE", nullable = false)
 	private String cidade;
 	
-	@Column(name = "UF")
+	@Column(name = "UF", nullable = false)
 	private String uf;
 }
