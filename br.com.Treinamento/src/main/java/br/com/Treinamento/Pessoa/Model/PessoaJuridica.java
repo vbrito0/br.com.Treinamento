@@ -1,41 +1,45 @@
 package br.com.Treinamento.Pessoa.Model;
 
-import java.sql.Date;
+import java.time.LocalDate;
 
+import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
-import javax.persistence.PrimaryKeyJoinColumn;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+import javax.validation.constraints.NotBlank;
 
+import org.hibernate.validator.constraints.br.CNPJ;
+
+import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
+@EqualsAndHashCode(of = "cnpj", callSuper = false)
 @Entity
-@DiscriminatorValue(value = "PJ")
-@PrimaryKeyJoinColumn(name="idPessoa")
+@DiscriminatorValue(value = "PESSOA_JURIDICA")
 public class PessoaJuridica extends Pessoa{
-
 	
 	private static final long serialVersionUID = 1L;
-	
+
+	@CNPJ(message = "CNPJ inválido")
+	@NotBlank(message = "CNPJ é obrigatório")
 	private String cnpj;
+	
+	@Column(name = "INSCRICAO_ESTADUAL")
 	private String inscricaoEstadual;
-	private Date fundacao;
 	
-	public String getCnpj() {
-		return cnpj;
-	}
-	public void setCnpj(String cnpj) {
-		this.cnpj = cnpj;
-	}
-	public String getInscricaoEstadual() {
-		return inscricaoEstadual;
-	}
-	public void setInscricaoEstadual(String inscricaoEstadual) {
-		this.inscricaoEstadual = inscricaoEstadual;
-	}
-	public Date getFundacao() {
-		return fundacao;
-	}
-	public void setFundacao(Date fundacao) {
-		this.fundacao = fundacao;
-	}
+	@Column(name = "FUNDACAO")
+	LocalDate fundacao;
 	
+	@OneToOne
+	@JoinColumn(name = "ID_PESSOA")
+	private Pessoa pessoa;
 	
 }

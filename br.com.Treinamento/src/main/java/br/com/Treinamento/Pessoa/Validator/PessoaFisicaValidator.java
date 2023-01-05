@@ -1,0 +1,12 @@
+package br.com.Treinamento.Pessoa.Validator;
+
+import java.util.Map;
+
+import javax.validation.ConstraintValidatorContext;
+
+import br.com.Treinamento.Pessoa.DTO.PessoaFisicaDTO;
+
+public interface PessoaFisicaValidator {
+	
+	public Map<String, String> validarPessoaFisica(PessoaFisicaDTO pessoaFisicaDTO, ConstraintValidatorContext context);
+}

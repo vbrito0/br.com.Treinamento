@@ -2,57 +2,56 @@ package br.com.Treinamento.Pessoa.Model;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorColumn;
-import javax.persistence.DiscriminatorType;
-import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.Setter;
 
-@Builder
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
-@ToString
-@EqualsAndHashCode
+@Getter
+@Setter
 @Entity
-@DiscriminatorColumn(name = "tipo", length = 1, discriminatorType = DiscriminatorType.STRING)
-@DiscriminatorValue("P")
-@Inheritance(strategy = InheritanceType.JOINED)
-@Table(name = "PESSOA", schema = "pessoa_estudo")
-public class Pessoa implements Serializable{
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = "TIPO_PESSOA")
+@NoArgsConstructor
+@EqualsAndHashCode(of = "idPessoa", callSuper = false)
+@Builder
+@AllArgsConstructor
+@Table(name = "PESSOA", schema = "manager_pessoa")
+public class Pessoa implements Serializable {
 	
 	 private static final long serialVersionUID = 1L;
 	 	
-	 	
-	    //FAZENDO UM MAPEAMENTO DO CAMPO DA ENTIDADE COM A COLUNA DO DB
-	    @Id
-	    //FAZENDO UMA SEQUENCE NO DB E DEPOIS MAPEAR O CAMPO QUE VAI SER GERADO
-	    @SequenceGenerator(name = "PESSOA_SQ", sequenceName = "PESSOA_SQ", allocationSize = 1, schema = "pessoa_estudo")
+	 	//FAZENDO UM MAPEAMENTO DO CAMPO DA ENTIDADE COM A COLUNA DO DB
+	 	//FAZENDO UMA SEQUENCE NO DB E DEPOIS MAPEAR O CAMPO QUE VAI SER GERADO
+	 	@Id
+	    @SequenceGenerator(name = "PESSOA_SQ", sequenceName = "PESSOA_SQ", allocationSize = 1, schema = "manager_pessoa")
 	    @GeneratedValue(generator = "PESSOA_SQ", strategy = GenerationType.SEQUENCE)
 	    @Column(name = "ID", nullable = false)
 	    private Long idPessoa;
 	    
 	 	@NotBlank
-	    @Column(name = "NOME")
+	    @Column(name = "NOME", nullable = false)
 	    private String nome;
 	 	
 	 	@NotBlank
-	 	@Column(name = "NOME_FANTASIA")
+	 	@Column(name = "NOME_FANTASIA", nullable = false)
 	 	private String nomeFantasia;
 	 	
 	 	@NotBlank
@@ -63,8 +62,7 @@ public class Pessoa implements Serializable{
 	 	@Column(name = "NUMERO", nullable = false)
 		private Integer numero;
 		
-	 	@NotBlank
-		@Column(name = "COMPLEMENTO", nullable = false)
+		@Column(name = "COMPLEMENTO")
 		private String complemento;
 		
 		@NotBlank
@@ -82,10 +80,26 @@ public class Pessoa implements Serializable{
 		@NotBlank
 		@Column(name = "UF", nullable = false)
 		private String uf;
-	 	
-	 	@NotBlank
-	 	@Column(name = "TIPO")
-	 	private String tipoPessoa;
-	 	
-	    
+		
+		@OneToOne(mappedBy = "pessoa", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+		private PessoaFisica pessoaFisica;
+		
+		@OneToOne(mappedBy = "pessoa", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+		private PessoaJuridica pessoaJuridica;
+
+		public PessoaFisica toPessoaFisica() {
+	        return (PessoaFisica) this;
+	    }
+
+	    public PessoaJuridica toPessoaJuridica() {
+	        return (PessoaJuridica) this;
+	    }
+
+	    public boolean isPessoaFisica() {
+	        return this instanceof PessoaFisica;
+	    }
+
+	    public boolean isPessoaJuridica() {
+	        return this instanceof PessoaJuridica;
+	    }
 	}
