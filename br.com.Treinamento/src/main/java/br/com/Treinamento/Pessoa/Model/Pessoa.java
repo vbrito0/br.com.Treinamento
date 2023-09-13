@@ -35,9 +35,9 @@ import lombok.Setter;
 @AllArgsConstructor
 @Table(name = "PESSOA", schema = "manager_pessoa")
 public class Pessoa implements Serializable {
-	
+
 	 private static final long serialVersionUID = 1L;
-	 	
+
 	 	//FAZENDO UM MAPEAMENTO DO CAMPO DA ENTIDADE COM A COLUNA DO DB
 	 	//FAZENDO UMA SEQUENCE NO DB E DEPOIS MAPEAR O CAMPO QUE VAI SER GERADO
 	 	@Id
@@ -45,45 +45,45 @@ public class Pessoa implements Serializable {
 	    @GeneratedValue(generator = "PESSOA_SQ", strategy = GenerationType.SEQUENCE)
 	    @Column(name = "ID", nullable = false)
 	    private Long idPessoa;
-	    
+
 	 	@NotBlank
 	    @Column(name = "NOME", nullable = false)
 	    private String nome;
-	 	
+
 	 	@NotBlank
 	 	@Column(name = "NOME_FANTASIA", nullable = false)
 	 	private String nomeFantasia;
-	 	
+
 	 	@NotBlank
 	 	@Column(name = "LOGRADOURO", nullable = false)
 		private String logradouro;
-	 	
+
 	 	@NotBlank
 	 	@Column(name = "NUMERO", nullable = false)
 		private Integer numero;
-		
+
 		@Column(name = "COMPLEMENTO")
 		private String complemento;
-		
+
 		@NotBlank
 		@Column(name = "BAIRRO", nullable = false)
 		private String bairro;
-		
+
 		@NotBlank
 		@Column(name = "CEP", nullable = false)
 		private String cep;
-		
+
 		@NotBlank
 		@Column(name = "CIDADE", nullable = false)
 		private String cidade;
-		
+
 		@NotBlank
 		@Column(name = "UF", nullable = false)
 		private String uf;
-		
+
 		@OneToOne(mappedBy = "pessoa", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
 		private PessoaFisica pessoaFisica;
-		
+
 		@OneToOne(mappedBy = "pessoa", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
 		private PessoaJuridica pessoaJuridica;
 

@@ -24,15 +24,15 @@ import br.com.Treinamento.Pessoa.Model.Pessoa;
 import br.com.Treinamento.Pessoa.Repository.PessoaRepository;
 
 public class PessoaServiceTest {
-	
+
 	@InjectMocks
 	private PessoaService pessoaService;
-	
+
 	@Mock
 	private PessoaRepository pessoaRepository;
-	
+
 	private TestInfo info;
-	    
+
 	    @BeforeEach
 	    public void setUp(TestInfo info) {
 	    	this.info = info;
@@ -45,7 +45,7 @@ public class PessoaServiceTest {
 	    	PessoaDTO pessoaDTO = PessoaDTOFixture.criarPessoaDTO().now();
 	        Mockito.when(pessoaRepository.save(Mockito.any(Pessoa.class))).thenReturn(pessoa);
 	        Pessoa pessoaParaRetornar = pessoaService.cadastrar(pessoaDTO);
-	        
+
 	        assertTrue(Objects.nonNull(pessoaParaRetornar));
 	        assertTrue(Objects.nonNull(pessoaParaRetornar.getIdPessoa()));
 	        assertTrue(Objects.nonNull(pessoaParaRetornar.getNome()));
@@ -69,14 +69,14 @@ public class PessoaServiceTest {
 	        assertThat(pessoaParaRetornar.getUf(), equalTo(pessoaDTO.getUf()));
 	        assertTrue(true);
 	    }
-	    
-	    
+
+
 	    @Test
 	    public void buscarPessoa() {
 	    	Pessoa pessoaBuscar = PessoaFixture.criarPessoa(info).comIdPessoa(1L).now();
 	    	when(pessoaRepository.findById(Mockito.anyLong())).thenReturn(Optional.ofNullable(pessoaBuscar));
 	    	pessoaService.buscarPessoa(pessoaBuscar.getIdPessoa());
-	    	
+
 	    	assertNotNull(pessoaBuscar);
 	    	assertThat(((Pessoa) pessoaBuscar).getIdPessoa(), equalTo(Long.valueOf(1)));
 	    }

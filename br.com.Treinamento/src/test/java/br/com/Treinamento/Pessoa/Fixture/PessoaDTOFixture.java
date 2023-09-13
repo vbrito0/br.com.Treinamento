@@ -13,9 +13,9 @@ public class PessoaDTOFixture {
 	 private static final String LOGRADOURO = "Rua Luz do Sol";
 	 private static final Integer NUMERO = 115;
 	 private static final String UF = "SP";
-	 
+
 	private static PessoaDTO pessoaDTO;
-	
+
 	public static PessoaDTOFixture criarPessoaDTO() {
 		pessoaDTO = PessoaDTO.builder().idPessoa(ID)
 									   .nome(NOME)
@@ -30,57 +30,57 @@ public class PessoaDTOFixture {
 									   .build();
 		return new PessoaDTOFixture();
 	}
-	
+
 	public PessoaDTOFixture comIdPessoa(Long idPessoa) {
 		pessoaDTO.setIdPessoa(idPessoa);
 		return this;
 	}
-	
+
 	public PessoaDTOFixture comNome(String nome) {
 		pessoaDTO.setNome(nome);
 		return this;
 	}
-	
+
 	public PessoaDTOFixture comNomeFantasia(String nomeFantasia) {
 		pessoaDTO.setNomeFantasia(nomeFantasia);
 		return this;
 	}
-	
+
 	public PessoaDTOFixture comCidade(String cidade) {
 		pessoaDTO.setCidade(cidade);
 		return this;
 	}
-	
+
 	public PessoaDTOFixture comBairro(String bairro) {
 		pessoaDTO.setBairro(bairro);
 		return this;
 	}
-	
+
 	public PessoaDTOFixture comCep(String cep) {
 		pessoaDTO.setCep(cep);
 		return this;
 	}
-	
+
 	public PessoaDTOFixture comComplemento(String complemento) {
 		pessoaDTO.setComplemento(complemento);
 		return this;
 	}
-	
+
 	public PessoaDTOFixture comLogradouro(String logradouro) {
 		pessoaDTO.setLogradouro(logradouro);
 		return this;
 	}
-	
+
 	public PessoaDTOFixture comNumero(Integer numero) {
 		pessoaDTO.setNumero(numero);
 		return this;
 	}
-	
+
 	public PessoaDTOFixture comUf(String uf) {
 		pessoaDTO.setUf(uf);
 		return this;
 	}
-	
+
 	public PessoaDTO now() {
 		return pessoaDTO;
 	}

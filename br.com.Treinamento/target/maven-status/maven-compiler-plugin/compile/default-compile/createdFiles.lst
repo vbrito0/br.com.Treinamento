@@ -30,6 +30,7 @@ br\com\Treinamento\Pessoa\Validator\PessoaValidator.class
 br\com\Treinamento\Pessoa\Validator\ValidatorBase.class
 br\com\Treinamento\Pessoa\DTO\PessoaDTO.class
 br\com\Treinamento\Pessoa\Validator\PessoaValidatorBase.class
+br\com\Treinamento\Pessoa\Message\Menssage.class
 br\com\Treinamento\Pessoa\DTO\PessoaDTO$PessoaDTOBuilder.class
 br\com\Treinamento\Pessoa\Config.class
 br\com\Treinamento\Pessoa\Repository\PessoaJuridicaRepository.class

@@ -18,7 +18,7 @@ import lombok.Setter;
 @ValidaPessoa(groups = { PessoaGroup.class })
 @Builder
 public class PessoaDTO {
-	
+
 	Long idPessoa;
 	String nome;
 	String nomeFantasia;
@@ -29,7 +29,7 @@ public class PessoaDTO {
 	String cep;
 	String uf;
 	Integer numero;
-	
+
 	public PessoaDTO(Pessoa pessoa) {
 		super();
 		idPessoa = pessoa.getIdPessoa();
@@ -43,7 +43,7 @@ public class PessoaDTO {
 		uf = pessoa.getUf();
 		numero = pessoa.getNumero();
 	}
-	
+
 	public static Pessoa fromPessoa(PessoaDTO pessoaDTO) {
 		Pessoa pessoa = new Pessoa();
 		pessoa.setNome(pessoaDTO.getNome());
@@ -57,7 +57,7 @@ public class PessoaDTO {
 		pessoa.setUf(pessoaDTO.getUf());
 		return pessoa;
 	}
-	
+
 	public static PessoaDTO fromPessoaDTO(Pessoa pessoa) {
 		PessoaDTO pessoaDTO = new PessoaDTO();
 		pessoaDTO.setNome(pessoa.getNome());
@@ -71,7 +71,7 @@ public class PessoaDTO {
 		pessoaDTO.setUf(pessoa.getUf());
 		return pessoaDTO;
 	}
-	
+
 	public static PessoaFisica fromPessoaFisica(PessoaFisicaDTO pessoaFisicaDTO) {
 		PessoaFisica pessoaFisica = new PessoaFisica();
 		pessoaFisica.setNome(pessoaFisicaDTO.getNome());
@@ -83,14 +83,14 @@ public class PessoaDTO {
 		pessoaFisica.setLogradouro(pessoaFisicaDTO.getLogradouro());
 		pessoaFisica.setNumero(pessoaFisicaDTO.getNumero());
 		pessoaFisica.setUf(pessoaFisicaDTO.getUf());
-		
+
 		pessoaFisica.setCpf(pessoaFisicaDTO.getCpf());
 		pessoaFisica.setRg(pessoaFisicaDTO.getRg());
 		pessoaFisica.setGenero(pessoaFisicaDTO.getGenero());
 		pessoaFisica.setNasc(pessoaFisicaDTO.getNasc());
 		return pessoaFisica;
 	}
-	
+
 	public static PessoaFisicaDTO fromPessoaFisicaDTO(PessoaFisica pessoaFisica) {
 		PessoaFisicaDTO pessoaFisicaDTO = new PessoaFisicaDTO();
 		pessoaFisicaDTO.setNome(pessoaFisica.getNome());
@@ -102,7 +102,7 @@ public class PessoaDTO {
 		pessoaFisicaDTO.setLogradouro(pessoaFisica.getLogradouro());
 		pessoaFisicaDTO.setNumero(pessoaFisica.getNumero());
 		pessoaFisicaDTO.setUf(pessoaFisica.getUf());
-		
+
 		pessoaFisicaDTO.setCpf(pessoaFisica.getCpf());
 		pessoaFisicaDTO.setRg(pessoaFisica.getRg());
 		pessoaFisicaDTO.setGenero(pessoaFisica.getGenero());

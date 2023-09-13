@@ -37,7 +37,7 @@ public class PessoaService {
 
 	@Autowired
 	private PessoaFisicaRepository pessoaFisicaRepository;
-	
+
 	@Autowired
 	private PessoaJuridicaRepository pessoaJuridicaRepository;
 
@@ -72,13 +72,13 @@ public class PessoaService {
 	public void alterar(PessoaDTO pessoaDTO) {
 		validarPessoa(pessoaDTO);
 		Pessoa pessoa = pessoaRepository.findById(pessoaDTO.getIdPessoa()).orElseThrow(() -> new NotFoundException(ID_NÃO_ENCONTRADO));
-		
+
 		if(Objects.nonNull(pessoaDTO.getNome())) {
 			pessoa.setNome(pessoaDTO.getNome());
-		} 
+		}
 		else if(Objects.nonNull(pessoaDTO.getNomeFantasia())) {
 			pessoa.setNomeFantasia(pessoaDTO.getNomeFantasia());
-		} 
+		}
 		else if(Objects.nonNull(pessoaDTO.getBairro())) {
 			pessoa.setBairro(pessoaDTO.getBairro());
 		}
@@ -143,7 +143,7 @@ public class PessoaService {
 	}
 
 	public List<PessoaJuridica> adicionarPessoaJuridica(Long idPessoa, PessoaJuridicaDTO pessoaJuridicaDTO) {
-		
+
 		List <Pessoa> pessoa = pessoaRepository.findByIdPessoa(idPessoa);
 		if (Objects.isNull(pessoa)) {
 			throw new NotFoundException(String.format(ID_NÃO_ENCONTRADO, idPessoa));

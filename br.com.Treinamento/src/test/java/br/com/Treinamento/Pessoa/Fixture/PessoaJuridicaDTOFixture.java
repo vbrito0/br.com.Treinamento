@@ -2,12 +2,10 @@ package br.com.Treinamento.Pessoa.Fixture;
 
 import java.time.LocalDate;
 
-import org.junit.jupiter.api.TestInfo;
-
 import br.com.Treinamento.Pessoa.DTO.PessoaJuridicaDTO;
 
 public class PessoaJuridicaDTOFixture {
-	
+
 	private static final long ID = 1L;
 	private static final String NOME = "Victor";
 	private static final String NOME_FANTASIA = "Victor-LTDA";
@@ -18,7 +16,7 @@ public class PessoaJuridicaDTOFixture {
 	private static final String LOGRADOURO = "Rua Luz do Sol";
 	private static final Integer NUMERO = 115;
 	private static final String UF = "SP";
-	
+
 	private static final String CNPJ = "99.999.999/9999-99";
 	private static final String INSCRICAO_ESTADUAL = "02.232.3355-6";
 	private static final LocalDate FUNDACAO = LocalDate.of(2021, 01, 01);
@@ -40,7 +38,7 @@ public class PessoaJuridicaDTOFixture {
 		pessoaJuridicaDTO.setCnpj(CNPJ);
 		pessoaJuridicaDTO.setInscricaoEstadual(INSCRICAO_ESTADUAL);
 		pessoaJuridicaDTO.setFundacao(FUNDACAO);
-		
+
 		return new PessoaJuridicaDTOFixture();
 	}
 
@@ -93,17 +91,17 @@ public class PessoaJuridicaDTOFixture {
 		pessoaJuridicaDTO.setUf(uf);
 		return this;
 	}
-	
+
 	public PessoaJuridicaDTOFixture comCnpj(String cnpj) {
 		pessoaJuridicaDTO.setCnpj(cnpj);
 		return this;
 	}
-	
+
 	public PessoaJuridicaDTOFixture comRg(String inscricaoEstadual) {
 		pessoaJuridicaDTO.setInscricaoEstadual(inscricaoEstadual);
 		return this;
 	}
-	
+
 	public PessoaJuridicaDTOFixture comFundacao(LocalDate fundacao) {
 		pessoaJuridicaDTO.setFundacao(fundacao);
 		return this;

@@ -14,7 +14,7 @@ import br.com.Treinamento.Pessoa.DTO.PessoaFisicaDTO;
 public class PessoaFisicaValidatorCamposObrigatorios extends PessoaFisicaValidatorBase {
 
 	private static final Logger logger = LoggerFactory.getLogger(PessoaFisicaValidatorCamposObrigatorios.class);
-	
+
 	@Override
 	public Map<String, String> validarPessoaFisica(PessoaFisicaDTO pessoaFisicaDTO, ConstraintValidatorContext context) {
 		Map<String, String> mensagens = new HashMap<>();
@@ -30,7 +30,7 @@ public class PessoaFisicaValidatorCamposObrigatorios extends PessoaFisicaValidat
 		validarCpf(pessoaFisicaDTO, mensagens);
 		validarRg(pessoaFisicaDTO, mensagens);
 		validarNasc(pessoaFisicaDTO, mensagens);
-		
+
 	}
 
 	private void validarNasc(PessoaFisicaDTO pessoaFisicaDTO, Map<String, String> mensagens) {
@@ -38,7 +38,7 @@ public class PessoaFisicaValidatorCamposObrigatorios extends PessoaFisicaValidat
 		if(Objects.isNull(pessoaFisicaDTO.getNasc())) {
 			logger.info("O campo de nascimento não pode ser nulo");
 			mensagens.put(MensagensPessoaFisica.getMensagemNascimento("Nascimento - "), "Nascimento - ");
-		}		
+		}
 	}
 
 	private void validarRg(PessoaFisicaDTO pessoaFisicaDTO, Map<String, String> mensagens) {
@@ -46,7 +46,7 @@ public class PessoaFisicaValidatorCamposObrigatorios extends PessoaFisicaValidat
 		if(Objects.isNull(pessoaFisicaDTO.getRg())) {
 			logger.info("O RG é um campo obrigatorio e não pode ser nulo");
 			mensagens.put(MensagensPessoaFisica.getMensagemRg("RG - "), "RG - ");
-		}		
+		}
 	}
 
 	private void validarCpf(PessoaFisicaDTO pessoaFisicaDTO, Map<String, String> mensagens) {
@@ -57,5 +57,5 @@ public class PessoaFisicaValidatorCamposObrigatorios extends PessoaFisicaValidat
 		}
 	}
 
-	
+
 }

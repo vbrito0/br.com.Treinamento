@@ -14,9 +14,9 @@ import br.com.Treinamento.Pessoa.DTO.PessoaFisicaDTO;
 
 @Configurable
 public class PessoaFisicaValidatorEngine extends ValidatorEngine implements ConstraintValidator<ValidaPessoaFisica, PessoaFisicaDTO>{
-	
+
 	private List<PessoaFisicaValidator> validators = new ArrayList<>();
-	
+
 	@Override
     public void initialize(ValidaPessoaFisica annotation) {
         validators.add(new PessoaFisicaValidatorCamposObrigatorios());

@@ -4,7 +4,6 @@ import java.time.LocalDate;
 
 import br.com.Treinamento.Pessoa.DTO.PessoaFisicaDTO;
 import br.com.Treinamento.Pessoa.Model.DomGenero;
-import br.com.Treinamento.Pessoa.Model.PessoaFisica;
 
 public class PessoaFisicaDTOFixture {
 
@@ -20,12 +19,12 @@ public class PessoaFisicaDTOFixture {
 	private static final String LOGRADOURO = "Rua Luz do Sol";
 	private static final Integer NUMERO = 115;
 	private static final String UF = "SP";
-	
+
 	private static final String CPF = "259.274.115-14";
 	private static final String RG = "39.755.111/8";
-	
+
 	private static PessoaFisicaDTO pessoaFisicaDTO;
-	
+
 	public static PessoaFisicaDTOFixture criarPessoaFisicaDTO() {
 		pessoaFisicaDTO = new PessoaFisicaDTO();
 		pessoaFisicaDTO.setIdPessoa(ID);
@@ -42,7 +41,7 @@ public class PessoaFisicaDTOFixture {
 		pessoaFisicaDTO.setRg(RG);
 		pessoaFisicaDTO.setGenero(GENERO);
 		pessoaFisicaDTO.setNasc(NASCIMENTO);
-		
+
 		return new PessoaFisicaDTOFixture();
 	}
 
@@ -95,22 +94,22 @@ public class PessoaFisicaDTOFixture {
 		pessoaFisicaDTO.setUf(uf);
 		return this;
 	}
-	
+
 	public PessoaFisicaDTOFixture comCpf(String cpf) {
 		pessoaFisicaDTO.setCpf(cpf);
 		return this;
 	}
-	
+
 	public PessoaFisicaDTOFixture comRg(String rg) {
 		pessoaFisicaDTO.setRg(rg);
 		return this;
 	}
-	
+
 	public PessoaFisicaDTOFixture comGenero(DomGenero genero) {
 		pessoaFisicaDTO.setGenero(genero);
 		return this;
 	}
-	
+
 	public PessoaFisicaDTOFixture comNascimento(LocalDate nasc) {
 		pessoaFisicaDTO.setNasc(nasc);
 		return this;

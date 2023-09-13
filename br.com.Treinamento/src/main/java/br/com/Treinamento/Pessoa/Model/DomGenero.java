@@ -9,7 +9,7 @@ import lombok.Getter;
 @Getter
 @AllArgsConstructor
 public enum DomGenero {
-	
+
 	MASCULINO(1),
     FEMININO(2),
     OUTROS(9);

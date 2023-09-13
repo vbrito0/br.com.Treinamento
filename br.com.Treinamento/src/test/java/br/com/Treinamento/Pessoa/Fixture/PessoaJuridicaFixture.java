@@ -7,7 +7,7 @@ import org.junit.jupiter.api.TestInfo;
 import br.com.Treinamento.Pessoa.Model.PessoaJuridica;
 
 public class PessoaJuridicaFixture {
-	
+
 	private static final long ID = 1L;
 	private static final String NOME = "Victor";
 	private static final String NOME_FANTASIA = "Victor-LTDA";
@@ -18,7 +18,7 @@ public class PessoaJuridicaFixture {
 	private static final String LOGRADOURO = "Rua Luz do Sol";
 	private static final Integer NUMERO = 115;
 	private static final String UF = "SP";
-	
+
 	private static final String CNPJ = "99.999.999/9999-99";
 	private static final String INSCRICAO_ESTADUAL = "02.232.3355-6";
 	private static final LocalDate FUNDACAO = LocalDate.of(2021, 01, 01);
@@ -40,7 +40,7 @@ public class PessoaJuridicaFixture {
 		pessoaJuridica.setCnpj(CNPJ);
 		pessoaJuridica.setInscricaoEstadual(INSCRICAO_ESTADUAL);
 		pessoaJuridica.setFundacao(FUNDACAO);
-		
+
 		return new PessoaJuridicaFixture();
 	}
 
@@ -93,17 +93,17 @@ public class PessoaJuridicaFixture {
 		pessoaJuridica.setUf(uf);
 		return this;
 	}
-	
+
 	public PessoaJuridicaFixture comCnpj(String cnpj) {
 		pessoaJuridica.setCnpj(cnpj);
 		return this;
 	}
-	
+
 	public PessoaJuridicaFixture comRg(String inscricaoEstadual) {
 		pessoaJuridica.setInscricaoEstadual(inscricaoEstadual);
 		return this;
 	}
-	
+
 	public PessoaJuridicaFixture comFundacao(LocalDate fundacao) {
 		pessoaJuridica.setFundacao(fundacao);
 		return this;

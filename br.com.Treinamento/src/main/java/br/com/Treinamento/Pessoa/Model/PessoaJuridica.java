@@ -25,21 +25,21 @@ import lombok.Setter;
 @Entity
 @DiscriminatorValue(value = "PESSOA_JURIDICA")
 public class PessoaJuridica extends Pessoa{
-	
+
 	private static final long serialVersionUID = 1L;
 
 	@CNPJ(message = "CNPJ inválido")
 	@NotBlank(message = "CNPJ é obrigatório")
 	private String cnpj;
-	
+
 	@Column(name = "INSCRICAO_ESTADUAL")
 	private String inscricaoEstadual;
-	
+
 	@Column(name = "FUNDACAO")
 	LocalDate fundacao;
-	
+
 	@OneToOne
 	@JoinColumn(name = "ID_PESSOA")
 	private Pessoa pessoa;
-	
+
 }

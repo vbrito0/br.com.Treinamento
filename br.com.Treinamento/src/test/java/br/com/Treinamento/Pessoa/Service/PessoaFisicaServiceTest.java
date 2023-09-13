@@ -24,26 +24,26 @@ import br.com.Treinamento.Pessoa.Repository.PessoaFisicaRepository;
 import br.com.Treinamento.Pessoa.Repository.PessoaRepository;
 
 public class PessoaFisicaServiceTest {
-	
+
 	@InjectMocks
 	private PessoaService pessoaService;
-	
+
 	@Mock
 	private PessoaRepository pessoaRepository;
-	
+
 	@Mock
 	private PessoaFisicaRepository pessoaFisicaRepository;
-	
+
 	private TestInfo info;
-	
+
 	private List<PessoaFisica> pessoaFisicaParaRetornar;
-	    
+
 	    @BeforeEach
 	    public void setUp(TestInfo info) {
 	    	this.info = info;
 	        MockitoAnnotations.openMocks(this);
 	    }
-	    
+
 	    @Test
 	    public void adicionarPessoaFisicaComSucesso() {
 	    	Pessoa pessoa = PessoaFixture.criarPessoa(info).now();

@@ -9,7 +9,6 @@ import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
 import br.com.Treinamento.Pessoa.DTO.PessoaDTO;
-import br.com.Treinamento.Pessoa.DTO.PessoaFisicaDTO;
 import br.com.Treinamento.Pessoa.DTO.ValidaPessoa;
 
 public class PessoaValidatorEngine extends ValidatorEngine implements ConstraintValidator<ValidaPessoa, PessoaDTO> {

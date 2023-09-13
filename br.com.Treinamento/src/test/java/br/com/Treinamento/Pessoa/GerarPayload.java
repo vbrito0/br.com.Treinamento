@@ -6,7 +6,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import br.com.Treinamento.Pessoa.Model.Pessoa;
 
 public class GerarPayload {
-	
+
 	 private static final String NOME = "Victor";
 	 private static final String CIDADE = "São Paulo";
 	 private static final String BAIRRO = "Cohabi II";
@@ -15,11 +15,11 @@ public class GerarPayload {
 	 private static final String LOGRADOURO = "Rua Luz do Sol";
 	 private static final Integer NUMERO = 115;
 	 private static final String UF = "SP";
-	
+
 	public static void main(final String[] args) throws JsonProcessingException {
         final ObjectMapper objectMapper = new ObjectMapper();
         Pessoa pessoa = new Pessoa();
-        
+
         pessoa.setIdPessoa(1L);
         pessoa.setNome(NOME);
         pessoa.setCidade(CIDADE);

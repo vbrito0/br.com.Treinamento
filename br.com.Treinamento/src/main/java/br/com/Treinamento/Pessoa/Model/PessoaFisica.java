@@ -37,33 +37,33 @@ import lombok.Setter;
 @Entity
 @DiscriminatorValue(value = "PESSOA_FISICA")
 public class PessoaFisica extends Pessoa implements Serializable{
-	
+
 	private static final long serialVersionUID = 1L;
 
 	@CPF(message = "CPF inválido")
 	@NotBlank(message = "CPF é obrigatório")
 	private String cpf;
-	
+
 	@Column(name = "RG")
 	@NotBlank(message = "RG é obrigatório")
 	private String rg;
-	
+
 	@Column(name = "GENERO")
 	@Enumerated(EnumType.STRING)
 	@NotBlank(message = "Genero é obrigatório")
 	private DomGenero genero;
-	
+
 	@JsonFormat(pattern = "dd/MM/yyyy")
     @JsonSerialize(using = LocalDateSerializer.class)
     @JsonDeserialize(using = LocalDateDeserializer.class)
     @Column(name = "DATA_NASCIMENTO")
     @NotNull(message = "Data de nascimento é obrigatória")
 	private LocalDate nasc;
-	
+
 	@OneToOne
 	@JoinColumn(name = "ID_PESSOA")
 	private Pessoa pessoa;
-	
+
 	public String getCpfSemMascara() {
         return cpf != null ? this.cpf.replaceAll("\\D+", "") : cpf;
     }

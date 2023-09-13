@@ -11,7 +11,7 @@ import com.google.common.base.Strings;
 import br.com.Treinamento.Pessoa.DTO.PessoaDTO;
 
 public class BasePessoaValidator extends PessoaValidatorBase{
-	
+
 	@Override
     public Map<String, String> validarPessoa(PessoaDTO pessoaDTO, ConstraintValidatorContext context) {
         Map<String, String> mensagens = new HashMap<>();

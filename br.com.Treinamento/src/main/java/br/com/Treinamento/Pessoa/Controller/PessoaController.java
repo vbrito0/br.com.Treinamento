@@ -34,29 +34,29 @@ public class PessoaController {
 		Pessoa pessoaSaved = pessoaService.cadastrar(pessoaDTO);
 		return ResponseEntity.status(HttpStatus.CREATED).body(pessoaSaved);
 	}
-	
+
 	@GetMapping
     public ResponseEntity<List<Pessoa>> buscarListaPessoa() {
         return new ResponseEntity<List<Pessoa>>(pessoaService.buscarPessoaList(), HttpStatus.OK);
     }
-	
+
 	@GetMapping("/{id}")
 	public ResponseEntity<PessoaDTO> buscarPessoas(@PathVariable("idPessoa") Long idPessoa) {
 		return new ResponseEntity<PessoaDTO>(pessoaService.buscarPessoa(idPessoa), HttpStatus.OK);
 	}
-	
+
 	@PutMapping("/alterar/{idPessoa}")
     public ResponseEntity<?> alterar(@RequestBody PessoaDTO pessoaDTO) {
 		pessoaService.alterar(pessoaDTO);
 		return new ResponseEntity<>(HttpStatus.ACCEPTED);
     }
-	
+
 	@PutMapping("/adicionar/pessoaFisica/{idPessoa}")
 	public ResponseEntity<?> adicionarPF(@PathVariable Long idPessoa, @RequestBody PessoaFisicaDTO pessoaFisicaDTO){
 		pessoaService.adicionarPessoaFisica(idPessoa, pessoaFisicaDTO);
 		return new ResponseEntity<>(HttpStatus.CREATED);
 	}
-	
+
 	@PutMapping("/adicionar/pessoaJuridica/{idPessoa}")
 	public ResponseEntity<?> adicionarPJ(@PathVariable Long idPessoa, @RequestBody PessoaJuridicaDTO pessoaJuridicaDTO){
 		pessoaService.adicionarPessoaJuridica(idPessoa, pessoaJuridicaDTO);

@@ -26,22 +26,22 @@ import lombok.NoArgsConstructor;
 public class PessoaFisicaDTO extends PessoaDTO {
 
 	Long idPessoa;
-	
+
 	String cpf;
-	
+
 	String rg;
-	
+
 	DomGenero genero;
-	
+
 	@JsonDeserialize(using = LocalDateDeserializer.class)
     @JsonSerialize(using = LocalDateSerializer.class)
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
 	LocalDate nasc;
 
-	
+
 	@JsonIgnore
     private PessoaFisica pessoaFisicaOriginal;
-	
+
 	@JsonIgnore
     public String getCpfSemMascara() {
         return cpf != null ? this.cpf.replaceAll("\\D+", "") : cpf;

@@ -4,10 +4,7 @@ import java.time.LocalDate;
 
 import org.junit.jupiter.api.TestInfo;
 
-import br.com.Treinamento.Pessoa.DTO.PessoaDTO;
-import br.com.Treinamento.Pessoa.DTO.PessoaFisicaDTO;
 import br.com.Treinamento.Pessoa.Model.DomGenero;
-import br.com.Treinamento.Pessoa.Model.Pessoa;
 import br.com.Treinamento.Pessoa.Model.PessoaFisica;
 
 public class PessoaFisicaFixture {
@@ -22,7 +19,7 @@ public class PessoaFisicaFixture {
 	private static final String LOGRADOURO = "Rua Luz do Sol";
 	private static final Integer NUMERO = 115;
 	private static final String UF = "SP";
-	
+
 	private static final String CPF = "259.274.115-14";
 	private static final String RG = "39.755.111/8";
 	private static final DomGenero GENERO = DomGenero.MASCULINO;
@@ -45,8 +42,8 @@ public class PessoaFisicaFixture {
 		pessoaFisica.setCpf(CPF);
 		pessoaFisica.setRg(RG);
 		pessoaFisica.setGenero(GENERO);
-		pessoaFisica.setNasc(NASCIMENTO);		
-		
+		pessoaFisica.setNasc(NASCIMENTO);
+
 		return new PessoaFisicaFixture();
 	}
 
@@ -99,22 +96,22 @@ public class PessoaFisicaFixture {
 		pessoaFisica.setUf(uf);
 		return this;
 	}
-	
+
 	public PessoaFisicaFixture comCpf(String cpf) {
 		pessoaFisica.setCpf(cpf);
 		return this;
 	}
-	
+
 	public PessoaFisicaFixture comRg(String rg) {
 		pessoaFisica.setRg(rg);
 		return this;
 	}
-	
+
 	public PessoaFisicaFixture comGenero(DomGenero genero) {
 		pessoaFisica.setGenero(genero);
 		return this;
 	}
-	
+
 	public PessoaFisicaFixture comNascimento(LocalDate nasc) {
 		pessoaFisica.setNasc(nasc);
 		return this;

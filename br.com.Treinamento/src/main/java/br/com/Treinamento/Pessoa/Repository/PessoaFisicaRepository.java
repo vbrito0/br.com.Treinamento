@@ -11,9 +11,9 @@ import br.com.Treinamento.Pessoa.Model.PessoaFisica;
 
 @Repository
 public interface PessoaFisicaRepository extends JpaRepository<PessoaFisica, Long>{
-	
+
 	Optional<PessoaFisica> findByCpf(String cpf);
-	
-	@Query("SELECT pf FROM PessoaFisica pf where pf.cpf = :cpf") 
+
+	@Query("SELECT pf FROM PessoaFisica pf where pf.cpf = :cpf")
     List<PessoaFisica> findPessoaFisicaByCPF(String cpf);
 }

@@ -34,7 +34,7 @@ public class ConversorPessoaDTO {
 		pessoaFisica.setNumero(dto.getNumero());
 		pessoaFisica.setUf(dto.getUf());
 	}
-	
+
 	public PessoaFisicaDTO convertPessoaFisicaDTO (PessoaFisica pessoaFisica) {
 		if (Objects.isNull(pessoaFisica)){
 			return null;

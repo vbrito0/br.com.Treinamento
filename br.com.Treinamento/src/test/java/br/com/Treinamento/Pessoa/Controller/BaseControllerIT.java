@@ -21,7 +21,7 @@ import br.com.Treinamento.Pessoa.Model.Pessoa;
 @ContextConfiguration
 @ActiveProfiles("test")
 public abstract class BaseControllerIT extends AbstractControllerIT{
-	
+
 	private static final String NOME = "Victor";
 	private static final String NOME_FANTASIA = "Victor";
 	private static final String CIDADE = "São Paulo";
@@ -31,11 +31,12 @@ public abstract class BaseControllerIT extends AbstractControllerIT{
 	private static final String LOGRADOURO = "Rua Luz do Sol";
 	private static final Integer NUMERO = 115;
 	private static final String UF = "SP";
-	
+
 	@Autowired
     public TestRestTemplate restTemplate;
-	
-	 @Test
+
+	 @Override
+	@Test
 	    public void contextLoads() {
 	    }
 
@@ -53,7 +54,7 @@ public abstract class BaseControllerIT extends AbstractControllerIT{
 	        headers.setContentType(MediaType.APPLICATION_JSON);
 	        return headers;
 	    }
-	    
+
 	    protected Pessoa buildPessoa() {
 			Pessoa pessoa = new Pessoa();
 			pessoa = Pessoa.builder().idPessoa(1L).nome(NOME).nomeFantasia(NOME_FANTASIA).cidade(CIDADE).bairro(BAIRRO)
