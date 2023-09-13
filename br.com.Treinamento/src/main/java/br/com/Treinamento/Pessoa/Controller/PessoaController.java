@@ -19,7 +19,6 @@ import br.com.Treinamento.Pessoa.DTO.PessoaDTO;
 import br.com.Treinamento.Pessoa.DTO.PessoaFisicaDTO;
 import br.com.Treinamento.Pessoa.DTO.PessoaJuridicaDTO;
 import br.com.Treinamento.Pessoa.Model.Pessoa;
-import br.com.Treinamento.Pessoa.Model.PessoaFisica;
 import br.com.Treinamento.Pessoa.Service.PessoaService;
 
 @RestController
@@ -48,7 +47,7 @@ public class PessoaController {
 	
 	@PutMapping("/alterar/{idPessoa}")
     public ResponseEntity<?> alterar(@RequestBody PessoaDTO pessoaDTO) {
-		pessoaService.alterar(pessoaDTO, pessoaDTO.getIdPessoa());
+		pessoaService.alterar(pessoaDTO);
 		return new ResponseEntity<>(HttpStatus.ACCEPTED);
     }
 	

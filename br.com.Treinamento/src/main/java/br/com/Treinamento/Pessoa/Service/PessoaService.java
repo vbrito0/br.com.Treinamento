@@ -1,5 +1,8 @@
 package br.com.Treinamento.Pessoa.Service;
 
+import static br.com.Treinamento.Pessoa.Message.Menssage.ID_NÃO_ENCONTRADO;
+import static br.com.Treinamento.Pessoa.Message.Menssage.MSG_PESSOA_EXISTENTE;
+
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Objects;
@@ -29,8 +32,6 @@ import br.com.Treinamento.Pessoa.Validator.PessoaGroup;
 @Service
 public class PessoaService {
 
-	private static final String ID_NÃO_ENCONTRADO = "Id não encontrado";
-
 	@Autowired
 	private PessoaRepository pessoaRepository;
 
@@ -49,18 +50,13 @@ public class PessoaService {
 				.complemento(pessoaDTO.getComplemento()).logradouro(pessoaDTO.getLogradouro())
 				.numero(pessoaDTO.getNumero()).uf(pessoaDTO.getUf()).build();
 
-		pessoa = salvarPessoa(pessoa);
-		return pessoa;
+		return pessoaRepository.save(pessoa);
 	}
 
 	private void validarSePessoaExiste(PessoaDTO pessoaDTO) {
 		if (Objects.isNull(pessoaDTO.getIdPessoa())) {
-			throw new BusinessException("Essa pessoa já está cadastrada na base!");
+			throw new BusinessException(MSG_PESSOA_EXISTENTE);
 		}
-	}
-
-	public Pessoa salvarPessoa(Pessoa pessoaSaved) {
-		return pessoaRepository.save(pessoaSaved);
 	}
 
 	public List<Pessoa> buscarPessoaList() {
@@ -73,26 +69,44 @@ public class PessoaService {
 		return dto;
 	}
 
-	public void alterar(PessoaDTO pessoaDTO, Long idPessoa) {
+	public void alterar(PessoaDTO pessoaDTO) {
 		validarPessoa(pessoaDTO);
-
-		Pessoa pessoa = pessoaRepository.findById(idPessoa).orElseThrow(() -> new NotFoundException(ID_NÃO_ENCONTRADO));
-		pessoa.setNome(pessoaDTO.getNome());
-		pessoa.setNomeFantasia(pessoaDTO.getNomeFantasia());
-		pessoa.setBairro(pessoaDTO.getBairro());
-		pessoa.setCep(pessoaDTO.getCep());
-		pessoa.setCidade(pessoaDTO.getCidade());
-		pessoa.setComplemento(pessoaDTO.getComplemento());
-		pessoa.setLogradouro(pessoaDTO.getLogradouro());
-		pessoa.setNumero(pessoaDTO.getNumero());
-		pessoa.setUf(pessoaDTO.getUf());
+		Pessoa pessoa = pessoaRepository.findById(pessoaDTO.getIdPessoa()).orElseThrow(() -> new NotFoundException(ID_NÃO_ENCONTRADO));
+		
+		if(Objects.nonNull(pessoaDTO.getNome())) {
+			pessoa.setNome(pessoaDTO.getNome());
+		} 
+		else if(Objects.nonNull(pessoaDTO.getNomeFantasia())) {
+			pessoa.setNomeFantasia(pessoaDTO.getNomeFantasia());
+		} 
+		else if(Objects.nonNull(pessoaDTO.getBairro())) {
+			pessoa.setBairro(pessoaDTO.getBairro());
+		}
+		else if(Objects.nonNull(pessoaDTO.getCep())) {
+			pessoa.setCep(pessoaDTO.getCep());
+		}
+		else if(Objects.nonNull(pessoaDTO.getCidade())) {
+			pessoa.setCidade(pessoaDTO.getCidade());
+		}
+		else if(Objects.nonNull(pessoaDTO.getComplemento())) {
+			pessoa.setComplemento(pessoaDTO.getComplemento());
+		}
+		else if(Objects.nonNull(pessoaDTO.getLogradouro())) {
+			pessoa.setLogradouro(pessoaDTO.getLogradouro());
+		}
+		else if(Objects.nonNull(pessoaDTO.getNumero())) {
+			pessoa.setNumero(pessoaDTO.getNumero());
+		}
+		else if(Objects.nonNull(pessoaDTO.getUf())) {
+			pessoa.setUf(pessoaDTO.getUf());
+		}
 		pessoaRepository.save(pessoa);
 	}
 
 	public List<PessoaFisica> adicionarPessoaFisica(Long idPessoa, PessoaFisicaDTO pessoaFisicaDTO) {
 
 		List <Pessoa> pessoa = pessoaRepository.findByIdPessoa(idPessoa);
-		if (Objects.isNull(idPessoa)) {
+		if (Objects.isNull(pessoa)) {
 			throw new NotFoundException(String.format(ID_NÃO_ENCONTRADO, idPessoa));
 		}
 		List<PessoaFisica> pessoaFisicaSaved = new LinkedList<PessoaFisica>();
@@ -113,10 +127,10 @@ public class PessoaService {
 			pessoaFisi.setRg(pessoaFisicaDTO.getRg());
 			pessoaFisi.setGenero(pessoaFisicaDTO.getGenero());
 			pessoaFisi.setNasc(pessoaFisicaDTO.getNasc());
-
+			pessoaFisicaRepository.save(pessoaFisi);
 		}
 
-		return pessoaFisicaRepository.saveAll(pessoaFisicaList);
+		return pessoaFisicaList;
 	}
 
 	private void validarPessoa(PessoaDTO pessoaDTO) {
@@ -131,7 +145,7 @@ public class PessoaService {
 	public List<PessoaJuridica> adicionarPessoaJuridica(Long idPessoa, PessoaJuridicaDTO pessoaJuridicaDTO) {
 		
 		List <Pessoa> pessoa = pessoaRepository.findByIdPessoa(idPessoa);
-		if (Objects.isNull(idPessoa)) {
+		if (Objects.isNull(pessoa)) {
 			throw new NotFoundException(String.format(ID_NÃO_ENCONTRADO, idPessoa));
 		}
 		List<PessoaJuridica> pessoaJuridicaSaved = new LinkedList<PessoaJuridica>();
@@ -151,9 +165,9 @@ public class PessoaService {
 			pessoaJu.setCnpj(pessoaJuridicaDTO.getCnpj());
 			pessoaJu.setInscricaoEstadual(pessoaJuridicaDTO.getInscricaoEstadual());
 			pessoaJu.setFundacao(pessoaJuridicaDTO.getFundacao());
+			pessoaJuridicaRepository.save(pessoaJu);
 		}
-
-		return pessoaJuridicaRepository.saveAll(pessoaJuridicaList);
+		return pessoaJuridicaList;
 	}
 
 }
