@@ -9,9 +9,9 @@ import java.util.Objects;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInfo;
+import org.mockito.ArgumentMatchers;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 
 import br.com.Treinamento.Pessoa.DTO.PessoaJuridicaDTO;
@@ -49,8 +49,8 @@ public class PessoaJuridicaServiceTest {
 	    	Pessoa pessoa = PessoaFixture.criarPessoa(info).now();
 	    	PessoaJuridica pessoaJuridica = PessoaJuridicaFixture.criarPessoaJuridica(info).now();
 	    	PessoaJuridicaDTO pessoaJuridicaDTO = PessoaJuridicaDTOFixture.criarPessoaJuridicaDTO().now();
-	    	when(pessoaRepository.save(Mockito.any(Pessoa.class))).thenReturn(pessoa);
-	        when(pessoaJuridicaRepository.save(Mockito.any(PessoaJuridica.class))).thenReturn(pessoaJuridica);
+	    	when(pessoaRepository.save(ArgumentMatchers.any(Pessoa.class))).thenReturn(pessoa);
+	        when(pessoaJuridicaRepository.save(ArgumentMatchers.any(PessoaJuridica.class))).thenReturn(pessoaJuridica);
 	        pessoaJuridicaParaRetornar = pessoaService.adicionarPessoaJuridica(pessoa.getIdPessoa(), pessoaJuridicaDTO);
 	        assertTrue(Objects.nonNull(pessoaJuridicaParaRetornar));
 	        assertTrue(true);

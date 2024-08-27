@@ -33,7 +33,7 @@ import lombok.Setter;
 @EqualsAndHashCode(of = "idPessoa", callSuper = false)
 @Builder
 @AllArgsConstructor
-@Table(name = "PESSOA", schema = "manager_pessoa")
+@Table(name = "PESSOA")
 public class Pessoa implements Serializable {
 
 	 private static final long serialVersionUID = 1L;
@@ -41,7 +41,7 @@ public class Pessoa implements Serializable {
 	 	//FAZENDO UM MAPEAMENTO DO CAMPO DA ENTIDADE COM A COLUNA DO DB
 	 	//FAZENDO UMA SEQUENCE NO DB E DEPOIS MAPEAR O CAMPO QUE VAI SER GERADO
 	 	@Id
-	    @SequenceGenerator(name = "PESSOA_SQ", sequenceName = "PESSOA_SQ", allocationSize = 1, schema = "manager_pessoa")
+	    @SequenceGenerator(name = "PESSOA_SQ", sequenceName = "PESSOA_SQ", allocationSize = 1)
 	    @GeneratedValue(generator = "PESSOA_SQ", strategy = GenerationType.SEQUENCE)
 	    @Column(name = "ID", nullable = false)
 	    private Long idPessoa;

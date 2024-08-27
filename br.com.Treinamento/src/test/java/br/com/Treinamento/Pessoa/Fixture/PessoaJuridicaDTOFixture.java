@@ -25,7 +25,6 @@ public class PessoaJuridicaDTOFixture {
 
 	public static PessoaJuridicaDTOFixture criarPessoaJuridicaDTO() {
 		pessoaJuridicaDTO = new PessoaJuridicaDTO();
-		pessoaJuridicaDTO.setIdPessoa(ID);
 		pessoaJuridicaDTO.setNome(NOME);
 		pessoaJuridicaDTO.setNomeFantasia(NOME_FANTASIA);
 		pessoaJuridicaDTO.setCidade(CIDADE);
@@ -40,11 +39,6 @@ public class PessoaJuridicaDTOFixture {
 		pessoaJuridicaDTO.setFundacao(FUNDACAO);
 
 		return new PessoaJuridicaDTOFixture();
-	}
-
-	public PessoaJuridicaDTOFixture comIdPessoa(Long idPessoa) {
-		pessoaJuridicaDTO.setIdPessoa(idPessoa);
-		return this;
 	}
 
 	public PessoaJuridicaDTOFixture comNome(String nome) {

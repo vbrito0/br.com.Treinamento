@@ -21,9 +21,6 @@ public class BasePessoaValidator extends PessoaValidatorBase{
     }
 
 	private void validaDadosObrigatorios(PessoaDTO pessoaDTO, Map<String, String> mensagens) {
-		if(Objects.isNull(pessoaDTO.getIdPessoa())) {
-			mensagens.put(MensagensPessoa.getMensagemCampoId("Id pessoa"), "Pessoa");
-		}
 		if(Strings.isNullOrEmpty(pessoaDTO.getNome())) {
 			mensagens.put(MensagensPessoa.getMensagemCampoNome("Nome"), "Pessoa");
 		}

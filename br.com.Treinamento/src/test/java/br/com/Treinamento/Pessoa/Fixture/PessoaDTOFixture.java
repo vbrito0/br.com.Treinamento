@@ -17,8 +17,7 @@ public class PessoaDTOFixture {
 	private static PessoaDTO pessoaDTO;
 
 	public static PessoaDTOFixture criarPessoaDTO() {
-		pessoaDTO = PessoaDTO.builder().idPessoa(ID)
-									   .nome(NOME)
+		pessoaDTO = PessoaDTO.builder().nome(NOME)
 									   .nomeFantasia(NOME_FANTASIA)
 									   .bairro(BAIRRO)
 									   .cep(CEP)
@@ -29,11 +28,6 @@ public class PessoaDTOFixture {
 									   .uf(UF)
 									   .build();
 		return new PessoaDTOFixture();
-	}
-
-	public PessoaDTOFixture comIdPessoa(Long idPessoa) {
-		pessoaDTO.setIdPessoa(idPessoa);
-		return this;
 	}
 
 	public PessoaDTOFixture comNome(String nome) {

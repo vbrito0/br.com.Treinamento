@@ -37,17 +37,17 @@ public class PessoaController {
 
 	@GetMapping
     public ResponseEntity<List<Pessoa>> buscarListaPessoa() {
-        return new ResponseEntity<List<Pessoa>>(pessoaService.buscarPessoaList(), HttpStatus.OK);
+        return new ResponseEntity<>(pessoaService.buscarPessoaList(), HttpStatus.OK);
     }
 
-	@GetMapping("/{id}")
-	public ResponseEntity<PessoaDTO> buscarPessoas(@PathVariable("idPessoa") Long idPessoa) {
-		return new ResponseEntity<PessoaDTO>(pessoaService.buscarPessoa(idPessoa), HttpStatus.OK);
+	@GetMapping("/{idPessoa}")
+	public ResponseEntity<PessoaDTO> buscarPessoas(@PathVariable Long idPessoa) {
+		return new ResponseEntity<>(pessoaService.buscarPessoa(idPessoa), HttpStatus.OK);
 	}
 
 	@PutMapping("/alterar/{idPessoa}")
-    public ResponseEntity<?> alterar(@RequestBody PessoaDTO pessoaDTO) {
-		pessoaService.alterar(pessoaDTO);
+    public ResponseEntity<?> alterar(@RequestBody PessoaDTO pessoaDTO, @PathVariable Long idPessoa) {
+		pessoaService.alterar(pessoaDTO, idPessoa);
 		return new ResponseEntity<>(HttpStatus.ACCEPTED);
     }
 

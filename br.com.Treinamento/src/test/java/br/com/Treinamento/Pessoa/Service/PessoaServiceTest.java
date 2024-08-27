@@ -12,6 +12,7 @@ import java.util.Optional;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInfo;
+import org.mockito.ArgumentMatchers;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
@@ -43,7 +44,7 @@ public class PessoaServiceTest {
 	    public void criarPessoaComSucesso() {
 	    	Pessoa pessoa = PessoaFixture.criarPessoa(info).now();
 	    	PessoaDTO pessoaDTO = PessoaDTOFixture.criarPessoaDTO().now();
-	        Mockito.when(pessoaRepository.save(Mockito.any(Pessoa.class))).thenReturn(pessoa);
+	        Mockito.when(pessoaRepository.save(ArgumentMatchers.any(Pessoa.class))).thenReturn(pessoa);
 	        Pessoa pessoaParaRetornar = pessoaService.cadastrar(pessoaDTO);
 
 	        assertTrue(Objects.nonNull(pessoaParaRetornar));
@@ -57,7 +58,6 @@ public class PessoaServiceTest {
 	        assertTrue(Objects.nonNull(pessoaParaRetornar.getLogradouro()));
 	        assertTrue(Objects.nonNull(pessoaParaRetornar.getNumero()));
 	        assertTrue(Objects.nonNull(pessoaParaRetornar.getUf()));
-	        assertThat(pessoaParaRetornar.getIdPessoa(), equalTo(pessoaDTO.getIdPessoa()));
 	        assertThat(pessoaParaRetornar.getNome(), equalTo(pessoaDTO.getNome()));
 	        assertThat(pessoaParaRetornar.getNomeFantasia(), equalTo(pessoaDTO.getNomeFantasia()));
 	        assertThat(pessoaParaRetornar.getCidade(), equalTo(pessoaDTO.getCidade()));
@@ -74,10 +74,10 @@ public class PessoaServiceTest {
 	    @Test
 	    public void buscarPessoa() {
 	    	Pessoa pessoaBuscar = PessoaFixture.criarPessoa(info).comIdPessoa(1L).now();
-	    	when(pessoaRepository.findById(Mockito.anyLong())).thenReturn(Optional.ofNullable(pessoaBuscar));
+	    	when(pessoaRepository.findById(ArgumentMatchers.anyLong())).thenReturn(Optional.ofNullable(pessoaBuscar));
 	    	pessoaService.buscarPessoa(pessoaBuscar.getIdPessoa());
 
 	    	assertNotNull(pessoaBuscar);
-	    	assertThat(((Pessoa) pessoaBuscar).getIdPessoa(), equalTo(Long.valueOf(1)));
+	    	assertThat(pessoaBuscar.getIdPessoa(), equalTo(Long.valueOf(1)));
 	    }
 }

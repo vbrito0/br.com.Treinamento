@@ -19,7 +19,6 @@ import lombok.Setter;
 @Builder
 public class PessoaDTO {
 
-	Long idPessoa;
 	String nome;
 	String nomeFantasia;
 	String logradouro;
@@ -32,7 +31,6 @@ public class PessoaDTO {
 
 	public PessoaDTO(Pessoa pessoa) {
 		super();
-		idPessoa = pessoa.getIdPessoa();
 		nome = pessoa.getNome();
 		nomeFantasia = pessoa.getNomeFantasia();
 		logradouro = pessoa.getLogradouro();

@@ -54,7 +54,7 @@ public class PessoaService {
 	}
 
 	private void validarSePessoaExiste(PessoaDTO pessoaDTO) {
-		if (Objects.isNull(pessoaDTO.getIdPessoa())) {
+		if (Objects.isNull(pessoaDTO)) {
 			throw new BusinessException(MSG_PESSOA_EXISTENTE);
 		}
 	}
@@ -69,9 +69,9 @@ public class PessoaService {
 		return dto;
 	}
 
-	public void alterar(PessoaDTO pessoaDTO) {
+	public void alterar(PessoaDTO pessoaDTO, Long idPessoa) {
 		validarPessoa(pessoaDTO);
-		Pessoa pessoa = pessoaRepository.findById(pessoaDTO.getIdPessoa()).orElseThrow(() -> new NotFoundException(ID_NÃO_ENCONTRADO));
+		Pessoa pessoa = pessoaRepository.findById(idPessoa).orElseThrow(() -> new NotFoundException(ID_NÃO_ENCONTRADO));
 
 		if(Objects.nonNull(pessoaDTO.getNome())) {
 			pessoa.setNome(pessoaDTO.getNome());
@@ -109,7 +109,7 @@ public class PessoaService {
 		if (Objects.isNull(pessoa)) {
 			throw new NotFoundException(String.format(ID_NÃO_ENCONTRADO, idPessoa));
 		}
-		List<PessoaFisica> pessoaFisicaSaved = new LinkedList<PessoaFisica>();
+		List<PessoaFisica> pessoaFisicaSaved = new LinkedList<>();
 		pessoa.stream().forEach(pessoaLoop -> {
 			pessoaFisicaSaved.add(pessoaLoop.getPessoaFisica());
 		});
@@ -148,16 +148,16 @@ public class PessoaService {
 		if (Objects.isNull(pessoa)) {
 			throw new NotFoundException(String.format(ID_NÃO_ENCONTRADO, idPessoa));
 		}
-		List<PessoaJuridica> pessoaJuridicaSaved = new LinkedList<PessoaJuridica>();
+		List<PessoaJuridica> pessoaJuridicaSaved = new LinkedList<>();
 		pessoa.stream().forEach(pessoaLoop -> {
 			pessoaJuridicaSaved.add(pessoaLoop.getPessoaJuridica());
 		});
 
 		List<PessoaJuridica> pessoaJuridicaList = new LinkedList<>();
 
-		if (Objects.nonNull(pessoaJuridicaDTO.getIdPessoa())) {
+		if (Objects.nonNull(pessoaJuridicaDTO)) {
 			pessoaJuridicaList = pessoaJuridicaSaved.stream().filter(
-					pj -> Objects.nonNull(pj.getIdPessoa()) && pessoaJuridicaDTO.getIdPessoa().equals(pj.getIdPessoa()))
+					pj -> Objects.nonNull(pj.getIdPessoa()) && pessoaJuridicaDTO.getNome().equals(pj.getNome()))
 					.collect(Collectors.toList());
 		}
 
