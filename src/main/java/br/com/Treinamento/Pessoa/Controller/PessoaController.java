@@ -16,8 +16,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.Treinamento.Pessoa.DTO.PessoaDTO;
-import br.com.Treinamento.Pessoa.DTO.PessoaFisicaDTO;
-import br.com.Treinamento.Pessoa.DTO.PessoaJuridicaDTO;
 import br.com.Treinamento.Pessoa.Model.Pessoa;
 import br.com.Treinamento.Pessoa.Service.PessoaService;
 
@@ -46,20 +44,8 @@ public class PessoaController {
 	}
 
 	@PutMapping("/alterar/{idPessoa}")
-    public ResponseEntity<?> alterar(@RequestBody PessoaDTO pessoaDTO, @PathVariable Long idPessoa) {
-		pessoaService.alterar(pessoaDTO, idPessoa);
-		return new ResponseEntity<>(HttpStatus.ACCEPTED);
+    public ResponseEntity<Pessoa> alterar(@RequestBody PessoaDTO pessoaDTO, @PathVariable Long idPessoa) {
+		Pessoa pessoaAlterada = pessoaService.alterar(pessoaDTO, idPessoa);
+		return ResponseEntity.status(HttpStatus.ACCEPTED).body(pessoaAlterada);
     }
-
-	@PutMapping("/adicionar/pessoaFisica/{idPessoa}")
-	public ResponseEntity<?> adicionarPF(@PathVariable Long idPessoa, @RequestBody PessoaFisicaDTO pessoaFisicaDTO){
-		pessoaService.adicionarPessoaFisica(idPessoa, pessoaFisicaDTO);
-		return new ResponseEntity<>(HttpStatus.CREATED);
-	}
-
-	@PutMapping("/adicionar/pessoaJuridica/{idPessoa}")
-	public ResponseEntity<?> adicionarPJ(@PathVariable Long idPessoa, @RequestBody PessoaJuridicaDTO pessoaJuridicaDTO){
-		pessoaService.adicionarPessoaJuridica(idPessoa, pessoaJuridicaDTO);
-		return new ResponseEntity<>(HttpStatus.CREATED);
-	}
 }

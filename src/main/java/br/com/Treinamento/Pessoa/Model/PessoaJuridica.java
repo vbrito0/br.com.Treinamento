@@ -7,12 +7,14 @@ import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
-import javax.validation.constraints.NotBlank;
 
-import org.hibernate.validator.constraints.br.CNPJ;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
+import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
 
 import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -21,20 +23,21 @@ import lombok.Setter;
 @NoArgsConstructor
 @Getter
 @Setter
-@EqualsAndHashCode(of = "cnpj", callSuper = false)
 @Entity
 @DiscriminatorValue(value = "PESSOA_JURIDICA")
 public class PessoaJuridica extends Pessoa{
 
 	private static final long serialVersionUID = 1L;
 
-	@CNPJ(message = "CNPJ inválido")
-	@NotBlank(message = "CNPJ é obrigatório")
+	@Column(name = "CNPJ")
 	private String cnpj;
 
 	@Column(name = "INSCRICAO_ESTADUAL")
 	private String inscricaoEstadual;
 
+	@JsonFormat(pattern = "dd/MM/yyyy")
+    @JsonSerialize(using = LocalDateSerializer.class)
+    @JsonDeserialize(using = LocalDateDeserializer.class)
 	@Column(name = "FUNDACAO")
 	LocalDate fundacao;
 

@@ -1,7 +1,11 @@
 package br.com.Treinamento.Pessoa.DTO;
 
+import static br.com.Treinamento.Pessoa.DTO.PessoaFisicaDTO.preenchimentoCamposPessoaFisica;
+import static br.com.Treinamento.Pessoa.DTO.PessoaJuridicaDTO.preenchimentoCamposPessoaJuridica;
+
 import br.com.Treinamento.Pessoa.Model.Pessoa;
 import br.com.Treinamento.Pessoa.Model.PessoaFisica;
+import br.com.Treinamento.Pessoa.Model.PessoaJuridica;
 import br.com.Treinamento.Pessoa.Validator.PessoaGroup;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -19,31 +23,53 @@ import lombok.Setter;
 @Builder
 public class PessoaDTO {
 
-	String nome;
-	String nomeFantasia;
-	String logradouro;
-	String bairro;
-	String cidade;
-	String complemento;
-	String cep;
-	String uf;
-	Integer numero;
+    private Long idPessoa;
+    private String nome;
+    private String nomeFantasia;
+    private String logradouro;
+    private String bairro;
+    private String cidade;
+    private String complemento;
+    private String cep;
+    private String uf;
+    private Integer numero;
+    private PessoaFisicaDTO pessoaFisicaDTO;
+    private PessoaJuridicaDTO pessoaJuridicaDTO;
 
-	public PessoaDTO(Pessoa pessoa) {
-		super();
-		nome = pessoa.getNome();
-		nomeFantasia = pessoa.getNomeFantasia();
-		logradouro = pessoa.getLogradouro();
-		bairro = pessoa.getBairro();
-		cidade = pessoa.getCidade();
-		complemento = pessoa.getComplemento();
-		cep = pessoa.getCep();
-		uf = pessoa.getUf();
-		numero = pessoa.getNumero();
-	}
+    public PessoaDTO(Pessoa pessoa) {
+        this.idPessoa = pessoa.getIdPessoa();
+        this.nome = pessoa.getNome();
+        this.nomeFantasia = pessoa.getNomeFantasia();
+        this.logradouro = pessoa.getLogradouro();
+        this.bairro = pessoa.getBairro();
+        this.cidade = pessoa.getCidade();
+        this.complemento = pessoa.getComplemento();
+        this.cep = pessoa.getCep();
+        this.uf = pessoa.getUf();
+        this.numero = pessoa.getNumero();
+        
+        if (pessoa instanceof PessoaFisica) {
+            this.pessoaFisicaDTO = new PessoaFisicaDTO((PessoaFisica) pessoa);
+        } else if (pessoa instanceof PessoaJuridica) {
+            this.pessoaJuridicaDTO = new PessoaJuridicaDTO((PessoaJuridica) pessoa);
+        }
+    }
 
-	public static Pessoa fromPessoa(PessoaDTO pessoaDTO) {
-		Pessoa pessoa = new Pessoa();
+    public static Pessoa fromPessoaDTO(PessoaDTO pessoaDTO) {
+        Pessoa pessoa = new Pessoa();
+        if (pessoaDTO.getPessoaFisicaDTO() != null) {
+            pessoa = new PessoaFisica();
+            preenchimentoCamposPessoa(pessoaDTO, pessoa);
+            preenchimentoCamposPessoaFisica(pessoaDTO, pessoa);
+        } else if (pessoaDTO.getPessoaJuridicaDTO() != null) {
+            pessoa = new PessoaJuridica();
+            preenchimentoCamposPessoa(pessoaDTO, pessoa);
+            preenchimentoCamposPessoaJuridica(pessoaDTO, pessoa);
+        } 
+        return pessoa;
+    }
+
+	private static void preenchimentoCamposPessoa(PessoaDTO pessoaDTO, Pessoa pessoa) {
 		pessoa.setNome(pessoaDTO.getNome());
 		pessoa.setNomeFantasia(pessoaDTO.getNomeFantasia());
 		pessoa.setBairro(pessoaDTO.getBairro());
@@ -53,58 +79,15 @@ public class PessoaDTO {
 		pessoa.setLogradouro(pessoaDTO.getLogradouro());
 		pessoa.setNumero(pessoaDTO.getNumero());
 		pessoa.setUf(pessoaDTO.getUf());
-		return pessoa;
 	}
 
-	public static PessoaDTO fromPessoaDTO(Pessoa pessoa) {
-		PessoaDTO pessoaDTO = new PessoaDTO();
-		pessoaDTO.setNome(pessoa.getNome());
-		pessoaDTO.setNomeFantasia(pessoa.getNomeFantasia());
-		pessoaDTO.setBairro(pessoa.getBairro());
-		pessoaDTO.setCep(pessoa.getCep());
-		pessoaDTO.setCidade(pessoa.getCidade());
-		pessoaDTO.setComplemento(pessoa.getComplemento());
-		pessoaDTO.setLogradouro(pessoa.getLogradouro());
-		pessoaDTO.setNumero(pessoa.getNumero());
-		pessoaDTO.setUf(pessoa.getUf());
-		return pessoaDTO;
-	}
-
-	public static PessoaFisica fromPessoaFisica(PessoaFisicaDTO pessoaFisicaDTO) {
-		PessoaFisica pessoaFisica = new PessoaFisica();
-		pessoaFisica.setNome(pessoaFisicaDTO.getNome());
-		pessoaFisica.setNomeFantasia(pessoaFisicaDTO.getNomeFantasia());
-		pessoaFisica.setBairro(pessoaFisicaDTO.getBairro());
-		pessoaFisica.setCep(pessoaFisicaDTO.getCep());
-		pessoaFisica.setCidade(pessoaFisicaDTO.getCidade());
-		pessoaFisica.setComplemento(pessoaFisicaDTO.getComplemento());
-		pessoaFisica.setLogradouro(pessoaFisicaDTO.getLogradouro());
-		pessoaFisica.setNumero(pessoaFisicaDTO.getNumero());
-		pessoaFisica.setUf(pessoaFisicaDTO.getUf());
-
-		pessoaFisica.setCpf(pessoaFisicaDTO.getCpf());
-		pessoaFisica.setRg(pessoaFisicaDTO.getRg());
-		pessoaFisica.setGenero(pessoaFisicaDTO.getGenero());
-		pessoaFisica.setNasc(pessoaFisicaDTO.getNasc());
-		return pessoaFisica;
-	}
-
-	public static PessoaFisicaDTO fromPessoaFisicaDTO(PessoaFisica pessoaFisica) {
-		PessoaFisicaDTO pessoaFisicaDTO = new PessoaFisicaDTO();
-		pessoaFisicaDTO.setNome(pessoaFisica.getNome());
-		pessoaFisicaDTO.setNomeFantasia(pessoaFisica.getNomeFantasia());
-		pessoaFisicaDTO.setBairro(pessoaFisica.getBairro());
-		pessoaFisicaDTO.setCep(pessoaFisica.getCep());
-		pessoaFisicaDTO.setCidade(pessoaFisica.getCidade());
-		pessoaFisicaDTO.setComplemento(pessoaFisica.getComplemento());
-		pessoaFisicaDTO.setLogradouro(pessoaFisica.getLogradouro());
-		pessoaFisicaDTO.setNumero(pessoaFisica.getNumero());
-		pessoaFisicaDTO.setUf(pessoaFisica.getUf());
-
-		pessoaFisicaDTO.setCpf(pessoaFisica.getCpf());
-		pessoaFisicaDTO.setRg(pessoaFisica.getRg());
-		pessoaFisicaDTO.setGenero(pessoaFisica.getGenero());
-		pessoaFisicaDTO.setNasc(pessoaFisica.getNasc());
-		return pessoaFisicaDTO;
-	}
+    public static PessoaDTO fromPessoa(Pessoa pessoa) {
+        PessoaDTO pessoaDTO = new PessoaDTO(pessoa);
+        if (pessoa instanceof PessoaFisica) {
+            pessoaDTO.setPessoaFisicaDTO(new PessoaFisicaDTO((PessoaFisica) pessoa));
+        } else if (pessoa instanceof PessoaJuridica) {
+            pessoaDTO.setPessoaJuridicaDTO(new PessoaJuridicaDTO((PessoaJuridica) pessoa));
+        }
+        return pessoaDTO;
+    }
 }

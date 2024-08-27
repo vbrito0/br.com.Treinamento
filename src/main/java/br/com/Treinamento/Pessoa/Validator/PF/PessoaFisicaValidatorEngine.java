@@ -1,4 +1,4 @@
-package br.com.Treinamento.Pessoa.Validator;
+package br.com.Treinamento.Pessoa.Validator.PF;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -11,6 +11,7 @@ import javax.validation.ConstraintValidatorContext;
 import org.springframework.beans.factory.annotation.Configurable;
 
 import br.com.Treinamento.Pessoa.DTO.PessoaFisicaDTO;
+import br.com.Treinamento.Pessoa.Validator.ValidatorEngine;
 
 @Configurable
 public class PessoaFisicaValidatorEngine extends ValidatorEngine implements ConstraintValidator<ValidaPessoaFisica, PessoaFisicaDTO>{

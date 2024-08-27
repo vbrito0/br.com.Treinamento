@@ -27,7 +27,6 @@ public class PessoaFisicaDTOFixture {
 
 	public static PessoaFisicaDTOFixture criarPessoaFisicaDTO() {
 		pessoaFisicaDTO = new PessoaFisicaDTO();
-		pessoaFisicaDTO.setIdPessoa(ID);
 		pessoaFisicaDTO.setNome(NOME);
 		pessoaFisicaDTO.setNomeFantasia(NOME_FANTASIA);
 		pessoaFisicaDTO.setCidade(CIDADE);
@@ -43,11 +42,6 @@ public class PessoaFisicaDTOFixture {
 		pessoaFisicaDTO.setNasc(NASCIMENTO);
 
 		return new PessoaFisicaDTOFixture();
-	}
-
-	public PessoaFisicaDTOFixture comIdPessoa(Long idPessoa) {
-		pessoaFisicaDTO.setIdPessoa(idPessoa);
-		return this;
 	}
 
 	public PessoaFisicaDTOFixture comNome(String nome) {

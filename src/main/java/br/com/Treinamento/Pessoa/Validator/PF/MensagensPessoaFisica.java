@@ -1,4 +1,4 @@
-package br.com.Treinamento.Pessoa.Validator;
+package br.com.Treinamento.Pessoa.Validator.PF;
 
 public class MensagensPessoaFisica {
 

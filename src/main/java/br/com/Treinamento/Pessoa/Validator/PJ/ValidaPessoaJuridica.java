@@ -1,4 +1,4 @@
-package br.com.Treinamento.Pessoa.Validator;
+package br.com.Treinamento.Pessoa.Validator.PJ;
 
 import static java.lang.annotation.ElementType.CONSTRUCTOR;
 import static java.lang.annotation.ElementType.FIELD;
@@ -14,11 +14,13 @@ import javax.validation.Constraint;
 import javax.validation.Payload;
 import javax.validation.constraints.NotNull;
 
+import br.com.Treinamento.Pessoa.Validator.PF.PessoaFisicaValidatorEngine;
+
 @NotNull
 @Target({ METHOD, FIELD, CONSTRUCTOR, PARAMETER, TYPE_USE })
 @Retention(RUNTIME)
-@Constraint(validatedBy = PessoaFisicaValidatorEngine.class)
-public @interface ValidaPessoaFisica {
+@Constraint(validatedBy = PessoaJuridicaValidatorEngine.class)
+public @interface ValidaPessoaJuridica {
 
 	String message() default "";
 
