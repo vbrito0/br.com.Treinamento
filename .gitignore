@@ -1,0 +1,13 @@
+mysql_data/
+
+target/
+.factorypath
+
+*.lst
+*.xml
+
+*.sock
+*.log
+
+.idea/
+*.iml

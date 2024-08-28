@@ -27,6 +27,7 @@ br\com\Treinamento\Pessoa\Validator\PJ\PessoaJuridicaGroup.class
 br\com\Treinamento\Pessoa\Controller\PessoaController.class
 br\com\Treinamento\Pessoa\PessoaApplication.class
 br\com\Treinamento\Pessoa\Repository\PessoaRepository.class
+br\com\Treinamento\Pessoa\Utils\CpfUtils.class
 br\com\Treinamento\Pessoa\DTO\PessoaFisicaDTO.class
 br\com\Treinamento\Pessoa\Model\Pessoa$PessoaBuilder.class
 br\com\Treinamento\Pessoa\Model\DomGenero.class
@@ -41,4 +42,5 @@ br\com\Treinamento\Pessoa\Validator\PessoaValidatorBase.class
 br\com\Treinamento\Pessoa\Message\Menssage.class
 br\com\Treinamento\Pessoa\Validator\PF\MensagensPessoaFisica.class
 br\com\Treinamento\Pessoa\DTO\PessoaDTO$PessoaDTOBuilder.class
+br\com\Treinamento\Pessoa\Utils\CnpjUtils.class
 br\com\Treinamento\Pessoa\Repository\PessoaJuridicaRepository.class

@@ -15,6 +15,8 @@ E:\projetos-eclipse\br.com.Treinamento\src\main\java\br\com\Treinamento\Pessoa\R
 E:\projetos-eclipse\br.com.Treinamento\src\main\java\br\com\Treinamento\Pessoa\Repository\PessoaJuridicaRepository.java
 E:\projetos-eclipse\br.com.Treinamento\src\main\java\br\com\Treinamento\Pessoa\Repository\PessoaRepository.java
 E:\projetos-eclipse\br.com.Treinamento\src\main\java\br\com\Treinamento\Pessoa\Service\PessoaService.java
+E:\projetos-eclipse\br.com.Treinamento\src\main\java\br\com\Treinamento\Pessoa\Utils\CnpjUtils.java
+E:\projetos-eclipse\br.com.Treinamento\src\main\java\br\com\Treinamento\Pessoa\Utils\CpfUtils.java
 E:\projetos-eclipse\br.com.Treinamento\src\main\java\br\com\Treinamento\Pessoa\Validator\BasePessoaValidator.java
 E:\projetos-eclipse\br.com.Treinamento\src\main\java\br\com\Treinamento\Pessoa\Validator\MensagensPessoa.java
 E:\projetos-eclipse\br.com.Treinamento\src\main\java\br\com\Treinamento\Pessoa\Validator\PessoaGroup.java

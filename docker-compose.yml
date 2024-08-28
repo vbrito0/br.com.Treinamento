@@ -1,0 +1,33 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: Pessoa-app
+    ports:
+      - "8090:8090"
+    depends_on:
+      - database
+    networks:
+      - pessoa-net
+
+  database:
+    image: mysql:5.7
+    container_name: PessoaDB
+    environment:
+      MYSQL_ROOT_PASSWORD: 123456
+      MYSQL_DATABASE: PessoaDB
+      MYSQL_USER: victor
+      MYSQL_PASSWORD: 123456
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./mysql_data:/var/lib/mysql
+    networks:
+      - pessoa-net
+
+networks:
+  pessoa-net:
+    driver: bridge
