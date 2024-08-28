@@ -1,13 +1,11 @@
+br\com\Treinamento\Pessoa\Controller\BaseControllerIT.class
 br\com\Treinamento\Pessoa\PessoaApplicationTest.class
 br\com\Treinamento\Pessoa\Service\PessoaServiceTest.class
 br\com\Treinamento\Pessoa\Fixture\PessoaFisicaDTOFixture.class
-br\com\Treinamento\Pessoa\Service\PessoaJuridicaServiceTest.class
+br\com\Treinamento\Pessoa\Fixture\PessoaFixture.class
 br\com\Treinamento\Pessoa\Controller\AbstractControllerIT.class
 br\com\Treinamento\Pessoa\Fixture\PessoaFisicaFixture.class
-br\com\Treinamento\Pessoa\Fixture\PessoaJuridicaDTOFixture.class
-br\com\Treinamento\Pessoa\Fixture\PessoaDTOFixture.class
-br\com\Treinamento\Pessoa\Controller\BaseControllerIT.class
-br\com\Treinamento\Pessoa\Fixture\PessoaFixture.class
-br\com\Treinamento\Pessoa\Service\PessoaFisicaServiceTest.class
 br\com\Treinamento\Pessoa\Fixture\PessoaJuridicaFixture.class
+br\com\Treinamento\Pessoa\Fixture\PessoaJuridicaDTOFixture.class
 br\com\Treinamento\Pessoa\GerarPayload.class
+br\com\Treinamento\Pessoa\Fixture\PessoaDTOFixture.class

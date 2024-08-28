@@ -7,14 +7,14 @@ public class MensagensPessoaFisica {
 	public static final String NASC_NULO = "O campo de nascimento não pode ser nulo";
 
 	public static String getMensagemCampoObrigatorio(String campo) {
-        return String.format(PREENCHIMENTO_OBRIGATORIO, campo);
+        return PREENCHIMENTO_OBRIGATORIO.formatted(campo);
     }
 
 	public static String getMensagemRg(String campo) {
-        return String.format(RG_NULO, campo);
+        return RG_NULO.formatted(campo);
     }
 
 	public static String getMensagemNascimento(String campo) {
-		return String.format(NASC_NULO, campo);
+		return NASC_NULO.formatted(campo);
 	}
 }

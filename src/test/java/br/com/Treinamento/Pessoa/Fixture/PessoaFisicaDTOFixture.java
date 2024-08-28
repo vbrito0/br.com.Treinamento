@@ -9,7 +9,6 @@ public class PessoaFisicaDTOFixture {
 
 	private static final DomGenero GENERO = DomGenero.MASCULINO;
 	private static final LocalDate NASCIMENTO = LocalDate.of(2002, 9, 27);
-	private static final long ID = 1L;
 	private static final String NOME = "Victor";
 	private static final String NOME_FANTASIA = "Victor-LTDA";
 	private static final String CIDADE = "São Paulo";

@@ -1,7 +1,6 @@
 package br.com.Treinamento.Pessoa.Controller;
 
 import org.junit.jupiter.api.Test;
-import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
@@ -11,12 +10,10 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringRunner;
 
 import br.com.Treinamento.Pessoa.PessoaApplication;
 import br.com.Treinamento.Pessoa.Model.Pessoa;
 
-@RunWith(SpringRunner.class)
 @SpringBootTest(classes = { PessoaApplication.class }, webEnvironment = WebEnvironment.RANDOM_PORT)
 @ContextConfiguration
 @ActiveProfiles("test")

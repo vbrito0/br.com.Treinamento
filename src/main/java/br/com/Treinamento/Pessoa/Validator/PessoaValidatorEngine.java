@@ -5,11 +5,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.validation.ConstraintValidator;
-import javax.validation.ConstraintValidatorContext;
+import jakarta.validation.ConstraintValidator;
+import jakarta.validation.ConstraintValidatorContext;
 
 import br.com.Treinamento.Pessoa.DTO.PessoaDTO;
-import br.com.Treinamento.Pessoa.DTO.ValidaPessoa;
 
 public class PessoaValidatorEngine extends ValidatorEngine implements ConstraintValidator<ValidaPessoa, PessoaDTO> {
 	private List<PessoaValidator> validators = new ArrayList<>();

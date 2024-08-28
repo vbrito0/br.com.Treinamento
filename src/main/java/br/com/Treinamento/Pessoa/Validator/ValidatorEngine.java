@@ -1,6 +1,6 @@
 package br.com.Treinamento.Pessoa.Validator;
 
-import javax.validation.ConstraintValidatorContext;
+import jakarta.validation.ConstraintValidatorContext;
 
 public class ValidatorEngine {
 

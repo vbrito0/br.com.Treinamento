@@ -13,39 +13,39 @@ public class MensagensPessoa {
 	private static final String CAMPO_NUMERO_NULO = "O campo do numero está nulo";
 
 	public static String getMensagemCampoId(String campo) {
-        return String.format(ID_NULL, campo);
+        return ID_NULL.formatted(campo);
     }
 
 	public static String getMensagemCampoNome(String campo) {
-		return String.format(CAMPO_NOME_VAZIO_OU_NULO, campo);
+		return CAMPO_NOME_VAZIO_OU_NULO.formatted(campo);
 	}
 
 	public static String getMensagemCampoNomeFantasia(String campo) {
-		return String.format(CAMPO_NOME_FANTASIA_VAZIO_OU_NULO, campo);
+		return CAMPO_NOME_FANTASIA_VAZIO_OU_NULO.formatted(campo);
 	}
 
 	public static String getMensagemCampoLogradouro(String campo) {
-		return String.format(CAMPO_LOGRADOURO_VAZIO_OU_NULO, campo);
+		return CAMPO_LOGRADOURO_VAZIO_OU_NULO.formatted(campo);
 	}
 
 	public static String getMensagemCampoBairro(String campo) {
-		return String.format(CAMPO_BAIRRO_VAZIO_OU_NULO, campo);
+		return CAMPO_BAIRRO_VAZIO_OU_NULO.formatted(campo);
 	}
 
 	public static String getMensagemCampoCidade(String campo) {
-		return String.format(CAMPO_CIDADE_VAZIO_OU_NULO, campo);
+		return CAMPO_CIDADE_VAZIO_OU_NULO.formatted(campo);
 	}
 
 	public static String getMensagemCampoCep(String campo) {
-		return String.format(CAMPO_CEP_VAZIO_OU_NULO, campo);
+		return CAMPO_CEP_VAZIO_OU_NULO.formatted(campo);
 	}
 
 	public static String getMensagemCampoUf(String campo) {
-		return String.format(CAMPO_UF_VAZIO_OU_NULO, campo);
+		return CAMPO_UF_VAZIO_OU_NULO.formatted(campo);
 	}
 
 	public static String getMensagemCampoNumero(String campo) {
-		return String.format(CAMPO_NUMERO_NULO, campo);
+		return CAMPO_NUMERO_NULO.formatted(campo);
 	}
 
 }

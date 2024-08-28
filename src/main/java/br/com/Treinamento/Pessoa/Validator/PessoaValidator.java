@@ -2,7 +2,7 @@ package br.com.Treinamento.Pessoa.Validator;
 
 import java.util.Map;
 
-import javax.validation.ConstraintValidatorContext;
+import jakarta.validation.ConstraintValidatorContext;
 
 import br.com.Treinamento.Pessoa.DTO.PessoaDTO;
 

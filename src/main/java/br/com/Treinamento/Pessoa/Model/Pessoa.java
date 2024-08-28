@@ -2,19 +2,16 @@ package br.com.Treinamento.Pessoa.Model;
 
 import java.io.Serializable;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.DiscriminatorColumn;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
-import javax.persistence.OneToOne;
-import javax.persistence.SequenceGenerator;
-import javax.persistence.Table;
-
+import jakarta.persistence.Column;
+import jakarta.persistence.DiscriminatorColumn;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Inheritance;
+import jakarta.persistence.InheritanceType;
+import jakarta.persistence.SequenceGenerator;
+import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
@@ -68,23 +65,25 @@ public class Pessoa implements Serializable {
 
 		@Column(name = "UF", nullable = false)
 		private String uf;
-
-		@OneToOne(mappedBy = "pessoa", cascade = CascadeType.ALL)
-		private PessoaFisica pessoaFisica;
-
-		@OneToOne(mappedBy = "pessoa", cascade = CascadeType.ALL)
-		private PessoaJuridica pessoaJuridica;
+		
+//		@JsonManagedReference
+//	    @OneToOne(mappedBy = "pessoa", cascade = CascadeType.ALL)
+//	    private PessoaFisica pessoaFisica;
+//
+//	    @JsonManagedReference
+//	    @OneToOne(mappedBy = "pessoa", cascade = CascadeType.ALL)
+//	    private PessoaJuridica pessoaJuridica;
 
 		public PessoaFisica toPessoaFisica() {
-		    if (this instanceof PessoaFisica) {
-		        return (PessoaFisica) this;
+		    if (this instanceof PessoaFisica fisica) {
+		        return fisica;
 		    }
 		    throw new ClassCastException("A instância não é do tipo PessoaFisica");
 		}
 
 		public PessoaJuridica toPessoaJuridica() {
-		    if (this instanceof PessoaJuridica) {
-		        return (PessoaJuridica) this;
+		    if (this instanceof PessoaJuridica juridica) {
+		        return juridica;
 		    }
 		    throw new ClassCastException("A instância não é do tipo PessoaJuridica");
 		}

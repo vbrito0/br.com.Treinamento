@@ -2,8 +2,8 @@ package br.com.Treinamento.Pessoa.Service;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.when;
 
 import java.util.Objects;
@@ -20,8 +20,11 @@ import org.mockito.MockitoAnnotations;
 
 import br.com.Treinamento.Pessoa.DTO.PessoaDTO;
 import br.com.Treinamento.Pessoa.Fixture.PessoaDTOFixture;
+import br.com.Treinamento.Pessoa.Fixture.PessoaFisicaFixture;
 import br.com.Treinamento.Pessoa.Fixture.PessoaFixture;
 import br.com.Treinamento.Pessoa.Model.Pessoa;
+import br.com.Treinamento.Pessoa.Model.PessoaFisica;
+import br.com.Treinamento.Pessoa.Repository.PessoaFisicaRepository;
 import br.com.Treinamento.Pessoa.Repository.PessoaRepository;
 
 public class PessoaServiceTest {
@@ -31,6 +34,8 @@ public class PessoaServiceTest {
 
 	@Mock
 	private PessoaRepository pessoaRepository;
+	@Mock
+	private PessoaFisicaRepository pessoaFisicaRepository;
 
 	private TestInfo info;
 
@@ -73,11 +78,12 @@ public class PessoaServiceTest {
 
 	    @Test
 	    public void buscarPessoa() {
-	    	Pessoa pessoaBuscar = PessoaFixture.criarPessoa(info).comIdPessoa(1L).now();
-	    	when(pessoaRepository.findById(ArgumentMatchers.anyLong())).thenReturn(Optional.ofNullable(pessoaBuscar));
-	    	pessoaService.buscarPessoa(pessoaBuscar.getIdPessoa());
+	    	PessoaFisica pessoaBuscar = PessoaFisicaFixture.criarPessoaFisica().now();
+	        when(pessoaFisicaRepository.findByCpf(ArgumentMatchers.anyString())).thenReturn(Optional.of(pessoaBuscar));
+	        
+	        Pessoa resultado = pessoaService.getCpf(pessoaBuscar.getCpf());
 
-	    	assertNotNull(pessoaBuscar);
-	    	assertThat(pessoaBuscar.getIdPessoa(), equalTo(Long.valueOf(1)));
+	        assertNotNull(resultado);
+	        assertThat(resultado.getIdPessoa(), equalTo(Long.valueOf(1)));
 	    }
 }

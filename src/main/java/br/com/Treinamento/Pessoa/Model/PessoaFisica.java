@@ -5,20 +5,17 @@ import java.time.LocalDate;
 import java.time.Period;
 import java.util.Objects;
 
-import javax.persistence.Column;
-import javax.persistence.DiscriminatorValue;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
-
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.DiscriminatorValue;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -50,9 +47,10 @@ public class PessoaFisica extends Pessoa implements Serializable {
     @Column(name = "DATA_NASCIMENTO")
     private LocalDate nasc;
 
-    @OneToOne
-    @JoinColumn(name = "ID_PESSOA")
-    private Pessoa pessoa;
+//    @JsonBackReference
+//    @OneToOne
+//    @JoinColumn(name = "ID_PESSOA")
+//    private Pessoa pessoa;
     
     public String getCpfSemMascara() {
         return cpf != null ? this.cpf.replaceAll("\\D+", "") : cpf;

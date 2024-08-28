@@ -7,6 +7,7 @@ import br.com.Treinamento.Pessoa.Model.Pessoa;
 import br.com.Treinamento.Pessoa.Model.PessoaFisica;
 import br.com.Treinamento.Pessoa.Model.PessoaJuridica;
 import br.com.Treinamento.Pessoa.Validator.PessoaGroup;
+import br.com.Treinamento.Pessoa.Validator.ValidaPessoa;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -48,10 +49,10 @@ public class PessoaDTO {
         this.uf = pessoa.getUf();
         this.numero = pessoa.getNumero();
         
-        if (pessoa instanceof PessoaFisica) {
-            this.pessoaFisicaDTO = new PessoaFisicaDTO((PessoaFisica) pessoa);
-        } else if (pessoa instanceof PessoaJuridica) {
-            this.pessoaJuridicaDTO = new PessoaJuridicaDTO((PessoaJuridica) pessoa);
+        if (pessoa instanceof PessoaFisica fisica) {
+            this.pessoaFisicaDTO = new PessoaFisicaDTO(fisica);
+        } else if (pessoa instanceof PessoaJuridica juridica) {
+            this.pessoaJuridicaDTO = new PessoaJuridicaDTO(juridica);
         }
     }
 
@@ -83,10 +84,10 @@ public class PessoaDTO {
 
     public static PessoaDTO fromPessoa(Pessoa pessoa) {
         PessoaDTO pessoaDTO = new PessoaDTO(pessoa);
-        if (pessoa instanceof PessoaFisica) {
-            pessoaDTO.setPessoaFisicaDTO(new PessoaFisicaDTO((PessoaFisica) pessoa));
-        } else if (pessoa instanceof PessoaJuridica) {
-            pessoaDTO.setPessoaJuridicaDTO(new PessoaJuridicaDTO((PessoaJuridica) pessoa));
+        if (pessoa instanceof PessoaFisica fisica) {
+            pessoaDTO.setPessoaFisicaDTO(new PessoaFisicaDTO(fisica));
+        } else if (pessoa instanceof PessoaJuridica juridica) {
+            pessoaDTO.setPessoaJuridicaDTO(new PessoaJuridicaDTO(juridica));
         }
         return pessoaDTO;
     }

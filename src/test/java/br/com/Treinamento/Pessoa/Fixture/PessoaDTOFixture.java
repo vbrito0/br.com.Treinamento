@@ -3,7 +3,6 @@ package br.com.Treinamento.Pessoa.Fixture;
 import br.com.Treinamento.Pessoa.DTO.PessoaDTO;
 
 public class PessoaDTOFixture {
-	 private static final long ID = 1L;
 	 private static final String NOME = "Victor";
 	 private static final String NOME_FANTASIA = "Victor-LTDA";
 	 private static final String CIDADE = "São Paulo";

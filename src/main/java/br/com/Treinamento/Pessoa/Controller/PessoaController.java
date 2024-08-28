@@ -2,11 +2,10 @@ package br.com.Treinamento.Pessoa.Controller;
 
 import java.util.List;
 
-import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import br.com.Treinamento.Pessoa.DTO.PessoaDTO;
 import br.com.Treinamento.Pessoa.Model.Pessoa;
 import br.com.Treinamento.Pessoa.Service.PessoaService;
+import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/pessoa")
@@ -26,7 +26,6 @@ public class PessoaController {
 	@Autowired
 	private PessoaService pessoaService;
 
-	// O GETMAPPING RESPONDE A REQUISIÇÃO
 	@PostMapping("/cadastrar")
 	public ResponseEntity<Pessoa> cadastrarPessoa(@Valid @RequestBody PessoaDTO pessoaDTO) {
 		Pessoa pessoaSaved = pessoaService.cadastrar(pessoaDTO);
@@ -38,14 +37,33 @@ public class PessoaController {
         return new ResponseEntity<>(pessoaService.buscarPessoaList(), HttpStatus.OK);
     }
 
-	@GetMapping("/{idPessoa}")
-	public ResponseEntity<PessoaDTO> buscarPessoas(@PathVariable Long idPessoa) {
-		return new ResponseEntity<>(pessoaService.buscarPessoa(idPessoa), HttpStatus.OK);
+	@GetMapping("/buscar-cpf/{cpf}")
+	public ResponseEntity<Pessoa> buscarPorCpf(@PathVariable String cpf){
+		Pessoa pessoaFisica = pessoaService.getCpf(cpf);
+		return ResponseEntity.status(HttpStatus.ACCEPTED).body(pessoaFisica);
 	}
-
-	@PutMapping("/alterar/{idPessoa}")
-    public ResponseEntity<Pessoa> alterar(@RequestBody PessoaDTO pessoaDTO, @PathVariable Long idPessoa) {
-		Pessoa pessoaAlterada = pessoaService.alterar(pessoaDTO, idPessoa);
-		return ResponseEntity.status(HttpStatus.ACCEPTED).body(pessoaAlterada);
-    }
+	
+	@PutMapping("/alterar-dados-pessoa/{cpf}")
+	public ResponseEntity<Pessoa> alterarPessoaFisica(@PathVariable String cpf, @RequestBody PessoaDTO pessoaDTO) {
+		pessoaService.alterarPessoaFisica(cpf, pessoaDTO);
+		return new ResponseEntity<>(HttpStatus.CREATED);
+	}
+	
+	@GetMapping("/buscar-cnpj/{cnpj}")
+	public ResponseEntity<Pessoa> buscarPorCnpj(@PathVariable String cnpj){
+		Pessoa pessoaJuridica = pessoaService.getCnpj(cnpj);
+		return ResponseEntity.status(HttpStatus.ACCEPTED).body(pessoaJuridica);
+	}
+	
+	@PutMapping("/alterar-dados-pessoa-juridica/{cnpj}")
+	public ResponseEntity<Pessoa> alterarPessoaJuridica(@PathVariable String cnpj, @RequestBody PessoaDTO pessoaDTO) {
+		pessoaService.alterarPessoaJuridica(cnpj, pessoaDTO);
+		return new ResponseEntity<>(HttpStatus.CREATED);
+	}
+	
+	@DeleteMapping("/deletar/{idPessoa}")
+	public ResponseEntity<Pessoa> deletarPessoa(@PathVariable Long idPessoa) {
+		pessoaService.deletar(idPessoa);
+		return new ResponseEntity<>(HttpStatus.OK);
+	}
 }
