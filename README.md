@@ -103,4 +103,30 @@ Representa a entidade base para Pessoa.
 - `logradouro` (string): Logradouro.
 - `numero` (integer): Número do endereço.
 - `complemento` (string): Complemento do endereço.
-- `bairro` (s
+- `bairro` (sstring): Bairro.
+- `cep` (string): CEP.
+- `cidade` (string): Cidade.
+- `uf` (string): Unidade Federativa.
+
+### PessoaFisica
+
+Representa uma pessoa física. Estende a entidade `Pessoa`.
+
+- `cpf` (string): CPF.
+- `rg` (string): RG.
+- `genero` (string): Gênero.
+- `dataNascimento` (string, formato: `yyyy-MM-dd`): Data de nascimento.
+
+### PessoaJuridica
+
+Representa uma pessoa jurídica. Estende a entidade `Pessoa`.
+
+- `cnpj` (string): CNPJ.
+- `inscricaoEstadual` (string): Inscrição estadual.
+
+## Notas
+
+- Todos os endpoints requerem autenticação.
+- As respostas de erro seguem o padrão de status HTTP.
+
+Para mais informações, consulte a documentação completa da API.
